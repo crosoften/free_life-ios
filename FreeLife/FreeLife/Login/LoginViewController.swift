@@ -9,6 +9,8 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
+    let viewModel = LoginViewModel()
+    
     lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -96,19 +98,26 @@ class LoginViewController: UIViewController {
 //            return
 //        }
         
-        loadingIndicator.startAnimating()
-        loadingIndicator.isHidden = false
-        loginButton.isEnabled = false
-        recoverPassword.isEnabled = false
+        startAnimation()
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            self.loadingIndicator.stopAnimating()
-            self.loadingIndicator.isHidden = true
-            self.loginButton.isEnabled = true
-            self.recoverPassword.isEnabled = true
-            
-            let vc = TabBarController()
-            self.navigationController?.pushViewController(vc, animated: true)
+        viewModel.login(email: email, password: senha) { result in
+            switch result {
+            case .success(let model):
+                let tabBar = TabBarController()
+                DispatchQueue.main.async {
+                    self.navigationController?.pushViewController(tabBar, animated: true)
+                }
+            case .failure(let error):
+                switch error {
+                case .noConnectivity:
+                    self.exibirAlerta(mensagem: "Sem conexão com a internet. Por favor, tente novamente mais tarde")
+                case .unauthorized:
+                    self.exibirAlerta(mensagem: "Email ou senha incorretos. Por favor, tente novamente")
+                default:
+                    self.exibirAlerta(mensagem: "Ocorreu um erro inesperado. Por favor, tente novamente")
+                }
+            }
+            self.stopAnimation()
         }
     }
 
@@ -119,6 +128,20 @@ class LoginViewController: UIViewController {
         passwordTextField.textField.isSecureTextEntry = true
         passwordTextField.textField.rightView = showPasswordButton
         passwordTextField.textField.rightViewMode = .always
+    }
+    
+    private func startAnimation() {
+        loadingIndicator.startAnimating()
+        loadingIndicator.isHidden = false
+        loginButton.isEnabled = false
+        recoverPassword.isEnabled = false
+    }
+    
+    private func stopAnimation() {
+        self.loadingIndicator.stopAnimating()
+        self.loadingIndicator.isHidden = true
+        self.loginButton.isEnabled = true
+        self.recoverPassword.isEnabled = true
     }
 }
 
@@ -198,5 +221,13 @@ extension LoginViewController: ViewCodeType {
     func setupAdditionalConfiguration() {
         view.backgroundColor = .white
         navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+}
+
+extension LoginViewController {
+    func exibirAlerta(mensagem: String) {
+        let alert = UIAlertController(title: "Erro de Login", message: mensagem, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
 }
