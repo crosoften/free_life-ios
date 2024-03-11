@@ -52,7 +52,7 @@
 		1E8FA2F32B27931700843555 /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FA2EE2B27931700843555 /* ContactViewController.swift */; };
 		1E8FA2F72B279A2000843555 /* CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FA2F62B279A2000843555 /* CustomNavigationBar.swift */; };
 		1E8FA2FA2B279B2300843555 /* CustomSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FA2F92B279B2300843555 /* CustomSearchBar.swift */; };
-		1E8FA2FD2B279C5D00843555 /* CustomButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FA2FC2B279C5D00843555 /* CustomButtonView.swift */; };
+		49DE52AE2B9B82B5006AE59D /* CustomButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DE52AD2B9B82B5006AE59D /* CustomButtonView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -103,7 +103,7 @@
 		1E8FA2EE2B27931700843555 /* ContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
 		1E8FA2F62B279A2000843555 /* CustomNavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomNavigationBar.swift; sourceTree = "<group>"; };
 		1E8FA2F92B279B2300843555 /* CustomSearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSearchBar.swift; sourceTree = "<group>"; };
-		1E8FA2FC2B279C5D00843555 /* CustomButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButtonView.swift; sourceTree = "<group>"; };
+		49DE52AD2B9B82B5006AE59D /* CustomButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButtonView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,13 +178,13 @@
 		1E8FA24C2B23819C00843555 /* DesingSystem */ = {
 			isa = PBXGroup;
 			children = (
+				49DE52AC2B9B8298006AE59D /* CustomButton */,
 				1E8FA2F52B2799E500843555 /* CustomNavigationBar */,
 				1E8FA2DE2B27908000843555 /* ProfileButtonCard */,
 				1E8FA2DB2B2780E200843555 /* CustomDetailsButton */,
 				1E8FA2872B2396E800843555 /* CustomValueCard */,
 				1E8FA2642B23836300843555 /* DSFonts */,
 				1E8FA2622B23836200843555 /* DSImage */,
-				1E8FA2FB2B279C5D00843555 /* CustomButton */,
 				1E8FA27C2B23866C00843555 /* CustomTextField */,
 				1E8FA2F82B279B2300843555 /* SearchBar */,
 				1E8FA2512B2381BB00843555 /* DSColors */,
@@ -396,13 +396,12 @@
 			path = DSColors/SearchBar;
 			sourceTree = "<group>";
 		};
-		1E8FA2FB2B279C5D00843555 /* CustomButton */ = {
+		49DE52AC2B9B8298006AE59D /* CustomButton */ = {
 			isa = PBXGroup;
 			children = (
-				1E8FA2FC2B279C5D00843555 /* CustomButtonView.swift */,
+				49DE52AD2B9B82B5006AE59D /* CustomButtonView.swift */,
 			);
-			name = CustomButton;
-			path = ../../../../../React/myshopp_ios/MyShopp/MyShopp/DesingSystem/CustomButton;
+			path = CustomButton;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -516,7 +515,7 @@
 				1E8FA2812B23866C00843555 /* CustomTextFieldView.swift in Sources */,
 				1E8FA2292B237C1500843555 /* SceneDelegate.swift in Sources */,
 				1E8FA27A2B23864600843555 /* NewPasswordViewController.swift in Sources */,
-				1E8FA2FD2B279C5D00843555 /* CustomButtonView.swift in Sources */,
+				49DE52AE2B9B82B5006AE59D /* CustomButtonView.swift in Sources */,
 				1E8FA26F2B23836300843555 /* DSFonts.swift in Sources */,
 				1E8FA2922B23A07400843555 /* CashbackViewController.swift in Sources */,
 			);
@@ -668,7 +667,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = FreeLive.FreeLife;
+				PRODUCT_BUNDLE_IDENTIFIER = br.com.nikolas;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -697,7 +696,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = FreeLive.FreeLife;
+				PRODUCT_BUNDLE_IDENTIFIER = br.com.nikolas;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;

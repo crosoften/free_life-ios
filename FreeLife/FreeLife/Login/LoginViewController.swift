@@ -86,15 +86,15 @@ class LoginViewController: UIViewController {
             return
         }
         
-        if !TextFieldValidator.validateText(for: .mail, text: email) {
-            customAlert(title: "Erro de email", message: "Email incorreto. Por favor, insira um email válido.")
-            return
-        }
-
-        if !TextFieldValidator.validateText(for: .password, text: senha) {
-            customAlert(title: "Erro de senha", message: "Sua senha está incorreta!")
-            return
-        }
+//        if !TextFieldValidator.validateText(for: .mail, text: email) {
+//            customAlert(title: "Erro de email", message: "Email incorreto. Por favor, insira um email válido.")
+//            return
+//        }
+//
+//        if !TextFieldValidator.validateText(for: .password, text: senha) {
+//            customAlert(title: "Erro de senha", message: "Sua senha está incorreta!")
+//            return
+//        }
         
         loadingIndicator.startAnimating()
         loadingIndicator.isHidden = false
