@@ -1,0 +1,6 @@
+framework module Pods_FreeLife {
+  umbrella header "Pods-FreeLife-umbrella.h"
+
+  export *
+  module * { export * }
+}

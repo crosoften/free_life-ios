@@ -55,6 +55,7 @@
 		49D0B8212B9F4777001C4BB8 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D0B8202B9F4777001C4BB8 /* LoginViewModel.swift */; };
 		49D0B8242B9F479F001C4BB8 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D0B8232B9F479F001C4BB8 /* LoginModel.swift */; };
 		49DE52AE2B9B82B5006AE59D /* CustomButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DE52AD2B9B82B5006AE59D /* CustomButtonView.swift */; };
+		CAE040E9B9E3A4E3F6446481 /* Pods_FreeLife.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA9B954C06FC3CAAFDBD1B8 /* Pods_FreeLife.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -108,6 +109,9 @@
 		49D0B8202B9F4777001C4BB8 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		49D0B8232B9F479F001C4BB8 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		49DE52AD2B9B82B5006AE59D /* CustomButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButtonView.swift; sourceTree = "<group>"; };
+		8AC1581233E8798D2D3752F7 /* Pods-FreeLife.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FreeLife.release.xcconfig"; path = "Target Support Files/Pods-FreeLife/Pods-FreeLife.release.xcconfig"; sourceTree = "<group>"; };
+		9AA9B954C06FC3CAAFDBD1B8 /* Pods_FreeLife.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FreeLife.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F42F3D852CB442F532675903 /* Pods-FreeLife.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FreeLife.debug.xcconfig"; path = "Target Support Files/Pods-FreeLife/Pods-FreeLife.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +119,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CAE040E9B9E3A4E3F6446481 /* Pods_FreeLife.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -126,6 +131,8 @@
 			children = (
 				1E8FA2252B237C1500843555 /* FreeLife */,
 				1E8FA2242B237C1500843555 /* Products */,
+				940A7F41210AC6584FC20346 /* Pods */,
+				25D9FAAACE4B0BB670612090 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -402,6 +409,14 @@
 			path = DSColors/SearchBar;
 			sourceTree = "<group>";
 		};
+		25D9FAAACE4B0BB670612090 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9AA9B954C06FC3CAAFDBD1B8 /* Pods_FreeLife.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		49D0B81F2B9F476A001C4BB8 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -426,6 +441,16 @@
 			path = CustomButton;
 			sourceTree = "<group>";
 		};
+		940A7F41210AC6584FC20346 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F42F3D852CB442F532675903 /* Pods-FreeLife.debug.xcconfig */,
+				8AC1581233E8798D2D3752F7 /* Pods-FreeLife.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -433,9 +458,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1E8FA2372B237C1E00843555 /* Build configuration list for PBXNativeTarget "FreeLife" */;
 			buildPhases = (
+				5120AA66DBDDDA52DA81A704 /* [CP] Check Pods Manifest.lock */,
 				1E8FA21F2B237C1500843555 /* Sources */,
 				1E8FA2202B237C1500843555 /* Frameworks */,
 				1E8FA2212B237C1500843555 /* Resources */,
+				FEC077614BAC3CA298672DC4 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -495,6 +522,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5120AA66DBDDDA52DA81A704 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FreeLife-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FEC077614BAC3CA298672DC4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FreeLife/Pods-FreeLife-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FreeLife/Pods-FreeLife-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FreeLife/Pods-FreeLife-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1E8FA21F2B237C1500843555 /* Sources */ = {
@@ -675,6 +744,7 @@
 		};
 		1E8FA2382B237C1E00843555 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F42F3D852CB442F532675903 /* Pods-FreeLife.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -704,6 +774,7 @@
 		};
 		1E8FA2392B237C1E00843555 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8AC1581233E8798D2D3752F7 /* Pods-FreeLife.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
