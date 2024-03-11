@@ -52,6 +52,8 @@
 		1E8FA2F32B27931700843555 /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FA2EE2B27931700843555 /* ContactViewController.swift */; };
 		1E8FA2F72B279A2000843555 /* CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FA2F62B279A2000843555 /* CustomNavigationBar.swift */; };
 		1E8FA2FA2B279B2300843555 /* CustomSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FA2F92B279B2300843555 /* CustomSearchBar.swift */; };
+		49D0B8212B9F4777001C4BB8 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D0B8202B9F4777001C4BB8 /* LoginViewModel.swift */; };
+		49D0B8242B9F479F001C4BB8 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D0B8232B9F479F001C4BB8 /* LoginModel.swift */; };
 		49DE52AE2B9B82B5006AE59D /* CustomButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DE52AD2B9B82B5006AE59D /* CustomButtonView.swift */; };
 /* End PBXBuildFile section */
 
@@ -103,6 +105,8 @@
 		1E8FA2EE2B27931700843555 /* ContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
 		1E8FA2F62B279A2000843555 /* CustomNavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomNavigationBar.swift; sourceTree = "<group>"; };
 		1E8FA2F92B279B2300843555 /* CustomSearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSearchBar.swift; sourceTree = "<group>"; };
+		49D0B8202B9F4777001C4BB8 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		49D0B8232B9F479F001C4BB8 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		49DE52AD2B9B82B5006AE59D /* CustomButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButtonView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -232,6 +236,8 @@
 		1E8FA2722B23864600843555 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				49D0B8222B9F4796001C4BB8 /* Model */,
+				49D0B81F2B9F476A001C4BB8 /* ViewModel */,
 				1E8FA2732B23864600843555 /* LoginViewController.swift */,
 				1E8FA2742B23864600843555 /* RecoverPassword */,
 			);
@@ -396,6 +402,22 @@
 			path = DSColors/SearchBar;
 			sourceTree = "<group>";
 		};
+		49D0B81F2B9F476A001C4BB8 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				49D0B8202B9F4777001C4BB8 /* LoginViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		49D0B8222B9F4796001C4BB8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				49D0B8232B9F479F001C4BB8 /* LoginModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		49DE52AC2B9B8298006AE59D /* CustomButton */ = {
 			isa = PBXGroup;
 			children = (
@@ -482,6 +504,7 @@
 				1E8FA2782B23864600843555 /* LoginViewController.swift in Sources */,
 				1E8FA2F32B27931700843555 /* ContactViewController.swift in Sources */,
 				1E8FA2462B23819300843555 /* UIView+ShadowBorder.swift in Sources */,
+				49D0B8242B9F479F001C4BB8 /* LoginModel.swift in Sources */,
 				1E8FA2E62B2790BB00843555 /* ProfileTableViewCell.swift in Sources */,
 				1E8FA2472B23819300843555 /* UIView+AutoLayout.swift in Sources */,
 				1E8FA2E02B27908000843555 /* CustomProfileButtonCard.swift in Sources */,
@@ -507,6 +530,7 @@
 				1E8FA2802B23866C00843555 /* TextFieldValitador.swift in Sources */,
 				1E8FA2892B23970C00843555 /* CustomValueCardView.swift in Sources */,
 				1E8FA2EF2B27931700843555 /* SafetyTipsViewController.swift in Sources */,
+				49D0B8212B9F4777001C4BB8 /* LoginViewModel.swift in Sources */,
 				1E8FA2F22B27931700843555 /* AboutViewController.swift in Sources */,
 				1E8FA2982B23A81900843555 /* RequestCashBackViewController.swift in Sources */,
 				1E8FA2492B23819300843555 /* ViewCodeType.swift in Sources */,
