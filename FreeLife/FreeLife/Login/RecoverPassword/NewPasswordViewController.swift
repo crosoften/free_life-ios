@@ -109,6 +109,8 @@ class NewPasswordViewController: UIViewController {
             customAlert(title: "Erro ao redefinir", message: "As senhas não coencidem!")
         }
         
+        
+        
         let vc = LoginViewController()
         navigationController?.pushViewController(vc, animated: true)
         customAlert(title: "Sucesso", message: "Sua senha foi redefinida!")

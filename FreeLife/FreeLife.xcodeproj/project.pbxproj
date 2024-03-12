@@ -54,6 +54,7 @@
 		1E8FA2FA2B279B2300843555 /* CustomSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FA2F92B279B2300843555 /* CustomSearchBar.swift */; };
 		490785652BA06FB00007868A /* RecoverPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490785642BA06FB00007868A /* RecoverPasswordViewModel.swift */; };
 		490785682BA074630007868A /* CustomTextFieldUsualy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490785672BA074630007868A /* CustomTextFieldUsualy.swift */; };
+		4907856A2BA078F10007868A /* NewPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490785692BA078F10007868A /* NewPasswordViewModel.swift */; };
 		49A2B37B2B9F49BF0003E034 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A2B37A2B9F49BF0003E034 /* Service.swift */; };
 		49A2B37D2B9F49FE0003E034 /* HTTPError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A2B37C2B9F49FE0003E034 /* HTTPError.swift */; };
 		49A2B37F2B9F4A420003E034 /* DomainError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A2B37E2B9F4A420003E034 /* DomainError.swift */; };
@@ -113,6 +114,7 @@
 		1E8FA2F92B279B2300843555 /* CustomSearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSearchBar.swift; sourceTree = "<group>"; };
 		490785642BA06FB00007868A /* RecoverPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoverPasswordViewModel.swift; sourceTree = "<group>"; };
 		490785672BA074630007868A /* CustomTextFieldUsualy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextFieldUsualy.swift; sourceTree = "<group>"; };
+		490785692BA078F10007868A /* NewPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPasswordViewModel.swift; sourceTree = "<group>"; };
 		49A2B37A2B9F49BF0003E034 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		49A2B37C2B9F49FE0003E034 /* HTTPError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPError.swift; sourceTree = "<group>"; };
 		49A2B37E2B9F4A420003E034 /* DomainError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainError.swift; sourceTree = "<group>"; };
@@ -434,6 +436,7 @@
 			isa = PBXGroup;
 			children = (
 				490785642BA06FB00007868A /* RecoverPasswordViewModel.swift */,
+				490785692BA078F10007868A /* NewPasswordViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -627,6 +630,7 @@
 				1E8FA2F12B27931700843555 /* PrivacyPoliciesViewController.swift in Sources */,
 				1E8FA2FA2B279B2300843555 /* CustomSearchBar.swift in Sources */,
 				1E8FA28F2B239D5D00843555 /* TicketViewController.swift in Sources */,
+				4907856A2BA078F10007868A /* NewPasswordViewModel.swift in Sources */,
 				1E8FA2612B2381DE00843555 /* TabBarController.swift in Sources */,
 				1E8FA24A2B23819300843555 /* CustomAlert.swift in Sources */,
 				1E8FA2F72B279A2000843555 /* CustomNavigationBar.swift in Sources */,
