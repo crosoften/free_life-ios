@@ -9,6 +9,8 @@ import UIKit
 
 class RecoverPasswordViewController: UIViewController {
     
+    let viewModel: RecoverPasswordViewModel = RecoverPasswordViewModel()
+    
     lazy var titleView: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -64,6 +66,22 @@ class RecoverPasswordViewController: UIViewController {
             return
         }
         
+        viewModel.postGetCode(email: email) { result in
+            switch result {
+            case .success(let message):
+                self.exibirAlerta(mensagem: message, title: "Verifique seu email", handler: self.presentNewPasswordViewController)
+            case .failure(let error):
+                switch error {
+                case .noConnectivity:
+                    self.exibirAlerta(mensagem: "Sem conexão com a internet. Por favor, tente novamente mais tarde")
+                case .unauthorized:
+                    self.exibirAlerta(mensagem: "Usuário não encontrado na base de dados.")
+                default:
+                    self.exibirAlerta(mensagem: "Erro interno no servidor.")
+                }
+            }
+        }
+        
         let vc = NewPasswordViewController()
         navigationController?.pushViewController(vc, animated: true)
         customAlert(title: "Aviso", message: "Um código foi enviado para sua caixa de email!")
@@ -78,6 +96,20 @@ class RecoverPasswordViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+    }
+    
+    func exibirAlerta(mensagem: String, title: String = "Erro", handler: (() -> Void)? = nil) {
+        let alert = UIAlertController(title: title, message: mensagem, preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .default) { _ in
+            handler?()
+        }
+        alert.addAction(action)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func presentNewPasswordViewController() {
+        let vc = NewPasswordViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 
