@@ -52,6 +52,7 @@
 		1E8FA2F32B27931700843555 /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FA2EE2B27931700843555 /* ContactViewController.swift */; };
 		1E8FA2F72B279A2000843555 /* CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FA2F62B279A2000843555 /* CustomNavigationBar.swift */; };
 		1E8FA2FA2B279B2300843555 /* CustomSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FA2F92B279B2300843555 /* CustomSearchBar.swift */; };
+		490785652BA06FB00007868A /* RecoverPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490785642BA06FB00007868A /* RecoverPasswordViewModel.swift */; };
 		49A2B37B2B9F49BF0003E034 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A2B37A2B9F49BF0003E034 /* Service.swift */; };
 		49A2B37D2B9F49FE0003E034 /* HTTPError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A2B37C2B9F49FE0003E034 /* HTTPError.swift */; };
 		49A2B37F2B9F4A420003E034 /* DomainError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A2B37E2B9F4A420003E034 /* DomainError.swift */; };
@@ -109,6 +110,7 @@
 		1E8FA2EE2B27931700843555 /* ContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
 		1E8FA2F62B279A2000843555 /* CustomNavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomNavigationBar.swift; sourceTree = "<group>"; };
 		1E8FA2F92B279B2300843555 /* CustomSearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSearchBar.swift; sourceTree = "<group>"; };
+		490785642BA06FB00007868A /* RecoverPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoverPasswordViewModel.swift; sourceTree = "<group>"; };
 		49A2B37A2B9F49BF0003E034 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		49A2B37C2B9F49FE0003E034 /* HTTPError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPError.swift; sourceTree = "<group>"; };
 		49A2B37E2B9F4A420003E034 /* DomainError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainError.swift; sourceTree = "<group>"; };
@@ -261,6 +263,7 @@
 		1E8FA2742B23864600843555 /* RecoverPassword */ = {
 			isa = PBXGroup;
 			children = (
+				490785632BA06F8F0007868A /* ViewModel */,
 				1E8FA2752B23864600843555 /* RecoverPasswordViewController.swift */,
 				1E8FA2762B23864600843555 /* NewPasswordViewController.swift */,
 				1E8FA2772B23864600843555 /* RecoverCodeViewController.swift */,
@@ -422,6 +425,14 @@
 				9AA9B954C06FC3CAAFDBD1B8 /* Pods_FreeLife.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		490785632BA06F8F0007868A /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				490785642BA06FB00007868A /* RecoverPasswordViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		49A2B3792B9F49A30003E034 /* Service */ = {
@@ -601,6 +612,7 @@
 				1E8FA2E82B2790D600843555 /* ProfileModel.swift in Sources */,
 				1E8FA28C2B2399E400843555 /* HomeViewController.swift in Sources */,
 				1E8FA25B2B2381BE00843555 /* DSColors.swift in Sources */,
+				490785652BA06FB00007868A /* RecoverPasswordViewModel.swift in Sources */,
 				1E8FA2F12B27931700843555 /* PrivacyPoliciesViewController.swift in Sources */,
 				1E8FA2FA2B279B2300843555 /* CustomSearchBar.swift in Sources */,
 				1E8FA28F2B239D5D00843555 /* TicketViewController.swift in Sources */,

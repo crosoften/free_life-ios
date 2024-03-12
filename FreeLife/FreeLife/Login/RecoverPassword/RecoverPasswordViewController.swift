@@ -64,7 +64,7 @@ class RecoverPasswordViewController: UIViewController {
             return
         }
         
-        let vc = RecoverCodeViewController()
+        let vc = NewPasswordViewController()
         navigationController?.pushViewController(vc, animated: true)
         customAlert(title: "Aviso", message: "Um código foi enviado para sua caixa de email!")
     }
