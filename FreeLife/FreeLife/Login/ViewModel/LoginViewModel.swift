@@ -12,7 +12,7 @@ class LoginViewModel {
     
     func login(email: String, password: String, completion: @escaping (Result<LoginModel, DomainError>) -> Void) {
 
-        guard let url = URL(string:"https://directnuv.com.br:8080/v1/sessions/standard") else { return }
+        guard let url = URL(string:"https://18.206.107.193:8080/swagger/auth/login") else { return }
         let body: Parameters = [
             "email": email,
             "password": password

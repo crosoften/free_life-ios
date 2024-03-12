@@ -12,7 +12,6 @@ class Service {
     
     static let shared = Service()
     private let session: Session = .default
-    private let baseUrl: String = "https://directnuv.com.br:8080/"
     
     private init() {}
     
