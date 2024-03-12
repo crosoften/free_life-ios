@@ -66,10 +66,13 @@ class RecoverPasswordViewController: UIViewController {
             return
         }
         
-        viewModel.postGetCode(email: email) { result in
+        viewModel.postGetCode(email: email) { [weak self] result in
+            guard let self = self else { return }
             switch result {
             case .success(let message):
                 self.exibirAlerta(mensagem: message, title: "Verifique seu email", handler: self.presentNewPasswordViewController)
+                let vc = NewPasswordViewController(viewModel: NewPasswordViewModel(email: email))
+                self.navigationController?.pushViewController(vc, animated: true)
             case .failure(let error):
                 switch error {
                 case .noConnectivity:
@@ -81,10 +84,6 @@ class RecoverPasswordViewController: UIViewController {
                 }
             }
         }
-        
-        let vc = NewPasswordViewController()
-        navigationController?.pushViewController(vc, animated: true)
-        customAlert(title: "Aviso", message: "Um código foi enviado para sua caixa de email!")
     }
     
     func exibirAlerta(mensagem: String) {

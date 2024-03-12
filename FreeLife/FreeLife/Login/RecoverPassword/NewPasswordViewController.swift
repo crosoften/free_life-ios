@@ -9,6 +9,13 @@ import UIKit
 
 class NewPasswordViewController: UIViewController {
     
+    var viewModel = NewPasswordViewModel(email: "")
+    
+    convenience init(viewModel: NewPasswordViewModel) {
+        self.init()
+        self.viewModel = viewModel
+    }
+    
     lazy var titleView: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -95,7 +102,8 @@ class NewPasswordViewController: UIViewController {
     @objc func tappedConfirmedButton() {
         
         guard let password = passwordTextField.textField.text, !password.isEmpty,
-              let confirmedPassword = confirmedPasswordTextField.textField.text, !confirmedPassword.isEmpty else {
+              let confirmedPassword = confirmedPasswordTextField.textField.text, !confirmedPassword.isEmpty,
+              let code = codeTextField.textField.text, !code.isEmpty else {
             customAlert(title: "Erro ao redefinir", message: "Por favor, preencha todos os campos.")
             return
         }
@@ -109,7 +117,19 @@ class NewPasswordViewController: UIViewController {
             customAlert(title: "Erro ao redefinir", message: "As senhas não coencidem!")
         }
         
-        
+        viewModel.postResetPassword(password: password, passwordConfirmation: confirmedPassword, code: code, completion: { result in
+            switch result {
+            case .success(let message):
+                self.exibirAlerta(mensagem: message,title: "Senha atualizada.", handler: self.goToLogin)
+            case .failure(let error):
+                switch error {
+                case .noConnectivity:
+                    self.exibirAlerta(mensagem: "Sem conexão com a internet. Por favor, tente novamente mais tarde")
+                default:
+                    self.exibirAlerta(mensagem: "Erro interno no servidor. Por favor, tente novamente mais tarde")
+                }
+            }
+        })
         
         let vc = LoginViewController()
         navigationController?.pushViewController(vc, animated: true)
@@ -127,6 +147,19 @@ class NewPasswordViewController: UIViewController {
         confirmedPasswordTextField.textField.isSecureTextEntry = true
         confirmedPasswordTextField.textField.rightView = showConfirmedPasswordButton
         confirmedPasswordTextField.textField.rightViewMode = .always
+    }
+    
+    private func goToLogin() {
+        self.navigationController?.popToRootViewController(animated: true)
+    }
+    
+    func exibirAlerta(mensagem: String, title: String = "Erro", handler: (() -> Void)? = nil) {
+        let alert = UIAlertController(title: title, message: mensagem, preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .default) { _ in
+            handler?()
+        }
+        alert.addAction(action)
+        self.present(alert, animated: true, completion: nil)
     }
 }
 
