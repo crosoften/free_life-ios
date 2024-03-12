@@ -13,8 +13,8 @@ class CustomTextFieldUsualy: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
 //        label.font = .dsFonts(.poppinsRegular12)
-        label.font = .dsFonts(.poppinsNormal12).withSize(14)
-//        label.font = .dsFonts(.text)
+        label.font = .dsFonts(.subTitle).withSize(14)
+
         label.textColor = .black
         return label
     }()

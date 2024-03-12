@@ -38,8 +38,10 @@ class NewPasswordViewController: UIViewController {
         return label
     }()
     
-    lazy var codeTextField: CustomTextFieldView = {
-        let textField = CustomTextFieldView(title: "Senha", placeholderLabel: "**********", imageset: .ds(.lock))
+    lazy var codeTextField: CustomTextFieldUsualy = {
+        let textField = CustomTextFieldUsualy()
+        textField.titleTextField.text = "Código"
+        textField.textField.placeholder = "Insira o código enviado para seu e-mail"
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
@@ -131,6 +133,7 @@ extension NewPasswordViewController: ViewCodeType {
         view.addSubview(titleView)
         view.addSubview(titleLabel)
         view.addSubview(descriptionLabel)
+        view.addSubview(codeTextField)
         view.addSubview(passwordTextField)
         view.addSubview(showPasswordButton)
         view.addSubview(confirmedPasswordTextField)
@@ -161,11 +164,20 @@ extension NewPasswordViewController: ViewCodeType {
             rightConstant: 34
         )
         
-        passwordTextField.anchor(
+        codeTextField.anchor(
             top: descriptionLabel.bottomAnchor,
             left: view.leftAnchor,
             right: view.rightAnchor,
             topConstant: 54,
+            leftConstant: 20,
+            rightConstant: 20,
+            heightConstant: 70
+        )
+        
+        passwordTextField.anchor(
+            top: codeTextField.bottomAnchor,
+            left: view.leftAnchor,
+            right: view.rightAnchor,
             leftConstant: 20,
             rightConstant: 20,
             heightConstant: 70

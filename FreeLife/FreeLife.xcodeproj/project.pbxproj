@@ -166,7 +166,7 @@
 				1E8FA2962B23A7F700843555 /* RequestCashBack */,
 				1E8FA2E12B27908600843555 /* Profile */,
 				1E8FA23D2B23819300843555 /* Commons */,
-				1E8FA24C2B23819C00843555 /* DesingSystem */,
+				1E8FA24C2B23819C00843555 /* DesignSystem */,
 				1E8FA2262B237C1500843555 /* AppDelegate.swift */,
 				1E8FA2282B237C1500843555 /* SceneDelegate.swift */,
 				1E8FA22A2B237C1500843555 /* ViewController.swift */,
@@ -197,7 +197,7 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
-		1E8FA24C2B23819C00843555 /* DesingSystem */ = {
+		1E8FA24C2B23819C00843555 /* DesignSystem */ = {
 			isa = PBXGroup;
 			children = (
 				490785662BA0743E0007868A /* CustomTextFieldUsualy */,
@@ -212,7 +212,7 @@
 				1E8FA2F82B279B2300843555 /* SearchBar */,
 				1E8FA2512B2381BB00843555 /* DSColors */,
 			);
-			path = DesingSystem;
+			path = DesignSystem;
 			sourceTree = "<group>";
 		};
 		1E8FA2512B2381BB00843555 /* DSColors */ = {
