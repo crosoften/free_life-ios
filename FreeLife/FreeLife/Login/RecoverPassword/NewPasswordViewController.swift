@@ -38,6 +38,12 @@ class NewPasswordViewController: UIViewController {
         return label
     }()
     
+    lazy var codeTextField: CustomTextFieldView = {
+        let textField = CustomTextFieldView(title: "Senha", placeholderLabel: "**********", imageset: .ds(.lock))
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        return textField
+    }()
+    
     lazy var passwordTextField: CustomTextFieldView = {
         let textField = CustomTextFieldView(title: "Senha", placeholderLabel: "**********", imageset: .ds(.lock))
         textField.translatesAutoresizingMaskIntoConstraints = false
@@ -200,6 +206,6 @@ extension NewPasswordViewController: ViewCodeType {
     }
     
     func setupAdditionalConfiguration() {
-        view.backgroundColor = .black
+        view.backgroundColor = .white
     }
 }
