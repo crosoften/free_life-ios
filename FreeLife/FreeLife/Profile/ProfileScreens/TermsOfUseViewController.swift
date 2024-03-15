@@ -8,6 +8,8 @@
 import UIKit
 
 class TermsOfUseViewController: UIViewController {
+    
+    let viewModel = ContentViewModel()
 
     lazy var navBar: CustomNavigationBar = {
         let nav = CustomNavigationBar()
@@ -21,7 +23,7 @@ class TermsOfUseViewController: UIViewController {
         navigationController?.popViewController(animated: true)
     }
 
-    lazy var TermsLabel: UILabel = {
+    lazy var termsLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Exemple"
@@ -36,12 +38,17 @@ class TermsOfUseViewController: UIViewController {
         super.viewDidLoad()
         setupView()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        getContent()
+    }
 }
 
 extension TermsOfUseViewController: ViewCodeType {
     func buildViewHierarchy() {
         view.addSubview(navBar)
-        view.addSubview(TermsLabel)
+        view.addSubview(termsLabel)
     }
     
     func setupConstraints() {
@@ -52,7 +59,7 @@ extension TermsOfUseViewController: ViewCodeType {
             heightConstant: 20
         )
         
-        TermsLabel.anchor(
+        termsLabel.anchor(
             top: navBar.bottomAnchor,
             left: view.leftAnchor,
             bottom: view.safeAreaLayoutGuide.bottomAnchor,
@@ -66,5 +73,28 @@ extension TermsOfUseViewController: ViewCodeType {
         view.backgroundColor = .white
     }
     
+    private func getContent() {
+        viewModel.getContent(type: .terms) { result in
+            switch result {
+            case .success(let model):
+                self.termsLabel.text = model.content
+            case .failure(let error):
+                switch error {
+                case .noConnectivity:
+                    self.exibirAlerta(mensagem: "Sem conexão com a internet. Por favor, tente novamente mais tarde")
+                case .unauthorized:
+                    self.exibirAlerta(mensagem: "Email ou senha incorretos. Por favor, tente novamente")
+                default:
+                    self.exibirAlerta(mensagem: "Ocorreu um erro inesperado. Por favor, tente novamente")
+                }
+            }
+        }
+    }
+    
+    func exibirAlerta(title: String = "Erro", mensagem: String) {
+        let alert = UIAlertController(title: title, message: mensagem, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
 }
 
