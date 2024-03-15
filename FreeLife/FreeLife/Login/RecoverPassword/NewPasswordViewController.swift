@@ -94,7 +94,7 @@ class NewPasswordViewController: UIViewController {
     lazy var confirmedButton: CustomButton = {
         let button = CustomButton(frame: .zero, style: .containedQuadDark)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Entrar", for: .normal)
+        button.setTitle("Redefinir", for: .normal)
         button.addTarget(self, action: #selector(tappedConfirmedButton), for: .touchUpInside)
         return button
     }()

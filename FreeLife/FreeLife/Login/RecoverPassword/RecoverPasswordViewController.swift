@@ -62,7 +62,7 @@ class RecoverPasswordViewController: UIViewController {
     lazy var sendButton: CustomButton = {
         let button = CustomButton(frame: .zero, style: .containedQuadDark)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Entrar", for: .normal)
+        button.setTitle("Enviar", for: .normal)
         button.addTarget(self, action: #selector(tappedSendButton), for: .touchUpInside)
         return button
     }()
