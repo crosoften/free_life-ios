@@ -10,13 +10,13 @@ import Foundation
 public protocol Model: Codable, Equatable {}
 
 struct LoginModel: Model {
+    var account: User
     var token: String
-    var user: User
 }
 
 struct User: Model {
     var id: Int
-    var name: String
-    var email: String
+    var role: String
     var type: String
+    var name: String
 }

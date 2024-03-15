@@ -12,9 +12,9 @@ class LoginViewModel {
     
     func login(email: String, password: String, completion: @escaping (Result<LoginModel, DomainError>) -> Void) {
 
-        guard let url = URL(string:"https://18.206.107.193:8080/swagger/auth/login") else { return }
+        guard let url = URL(string:"https://freelifeconect.app.br:8080/auth/login") else { return }
         let body: Parameters = [
-            "email": email,
+            "credential": email,
             "password": password
         ]
         Service.shared.request(in: url, method: .post, parameters: body) { result in
@@ -23,6 +23,8 @@ class LoginViewModel {
                 if let data = data, let loginModel = try? JSONDecoder().decode(LoginModel.self, from: data) {
                     completion(.success(loginModel))
                 } else {
+                    let jsonObject = try? JSONSerialization.jsonObject(with: data!)
+                    print(jsonObject)
                     completion(.failure(.unexpected))
                 }
             case .failure(let error):

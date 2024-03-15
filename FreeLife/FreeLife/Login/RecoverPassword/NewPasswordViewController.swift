@@ -9,7 +9,7 @@ import UIKit
 
 class NewPasswordViewController: UIViewController {
     
-    var viewModel = NewPasswordViewModel(email: "")
+    var viewModel: NewPasswordViewModel?
     
     convenience init(viewModel: NewPasswordViewModel) {
         self.init()
@@ -117,7 +117,7 @@ class NewPasswordViewController: UIViewController {
             customAlert(title: "Erro ao redefinir", message: "As senhas não coencidem!")
         }
         
-        viewModel.postResetPassword(password: password, passwordConfirmation: confirmedPassword, code: code, completion: { result in
+        viewModel?.postResetPassword(password: password, passwordConfirmation: confirmedPassword, code: code, completion: { result in
             switch result {
             case .success(let message):
                 self.exibirAlerta(mensagem: message,title: "Senha atualizada.", handler: self.goToLogin)
@@ -130,10 +130,7 @@ class NewPasswordViewController: UIViewController {
                 }
             }
         })
-        
-        let vc = LoginViewController()
-        navigationController?.pushViewController(vc, animated: true)
-        customAlert(title: "Sucesso", message: "Sua senha foi redefinida!")
+//        customAlert(title: "Sucesso", message: "Sua senha foi redefinida!")
     }
     
     override func viewDidLoad() {

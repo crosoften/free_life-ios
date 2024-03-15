@@ -29,6 +29,7 @@ class LoginViewController: UIViewController {
     
     lazy var emailTextField: CustomTextFieldView = {
         let textField = CustomTextFieldView(title: "E-mail", placeholderLabel: "mail@email.com", imageset: .ds(.profileBlue))
+        textField.textField.autocapitalizationType = .none
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()

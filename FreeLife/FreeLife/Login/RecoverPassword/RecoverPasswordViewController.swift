@@ -11,6 +11,18 @@ class RecoverPasswordViewController: UIViewController {
     
     let viewModel: RecoverPasswordViewModel = RecoverPasswordViewModel()
     
+    lazy var navBar: CustomNavigationBar = {
+        let nav = CustomNavigationBar()
+        nav.translatesAutoresizingMaskIntoConstraints = false
+        nav.titleLabel.text = "DICAS DE SEGURANÇA"
+        nav.backButton.addTarget(self, action: #selector(tappedBackButton), for: .touchUpInside)
+        return nav
+    }()
+    
+    @objc func tappedBackButton() {
+        navigationController?.popViewController(animated: true)
+    }
+    
     lazy var titleView: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -42,6 +54,7 @@ class RecoverPasswordViewController: UIViewController {
     
     lazy var emailTextField: CustomTextFieldView = {
         let textField = CustomTextFieldView(title: "E-mail", placeholderLabel: "mail@email.com", imageset: .ds(.profileBlue))
+        textField.textField.autocapitalizationType = .none
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
@@ -70,9 +83,10 @@ class RecoverPasswordViewController: UIViewController {
             guard let self = self else { return }
             switch result {
             case .success(let message):
-                self.exibirAlerta(mensagem: message, title: "Verifique seu email", handler: self.presentNewPasswordViewController)
-                let vc = NewPasswordViewController(viewModel: NewPasswordViewModel(email: email))
-                self.navigationController?.pushViewController(vc, animated: true)
+                self.exibirAlerta(mensagem: message, title: "Verifique seu email") { [weak self] in
+                    guard let self = self else { return }
+                    self.presentNewPasswordViewController(email: email)
+                }
             case .failure(let error):
                 switch error {
                 case .noConnectivity:
@@ -106,14 +120,15 @@ class RecoverPasswordViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
-    func presentNewPasswordViewController() {
-        let vc = NewPasswordViewController()
+    func presentNewPasswordViewController(email: String) {
+        let vc = NewPasswordViewController(viewModel: NewPasswordViewModel(email: email))
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 
 extension RecoverPasswordViewController: ViewCodeType {
     func buildViewHierarchy() {
+        view.addSubview(navBar)
         view.addSubview(titleView)
         view.addSubview(titleLabel)
         view.addSubview(descriptionLabel)
@@ -122,8 +137,15 @@ extension RecoverPasswordViewController: ViewCodeType {
     }
     
     func setupConstraints() {
-        titleView.anchor(
+        navBar.anchor(
             top: view.safeAreaLayoutGuide.topAnchor,
+            left: view.leftAnchor,
+            right: view.rightAnchor,
+            heightConstant: 20
+        )
+        
+        titleView.anchor(
+            top: navBar.bottomAnchor,
             centerX: view.centerXAnchor,
             topConstant: 10
         )
