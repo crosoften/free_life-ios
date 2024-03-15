@@ -8,6 +8,8 @@
 import UIKit
 
 class ContactViewController: UIViewController {
+    
+    let viewModel = ContactViewModel()
 
     lazy var navBar: CustomNavigationBar = {
         let nav = CustomNavigationBar()
@@ -49,6 +51,8 @@ class ContactViewController: UIViewController {
     
     lazy var emailTextField: CustomTextFieldView = {
         let textField = CustomTextFieldView(title: "Senha", placeholderLabel: "mail@email.com", imageset: .ds(.profileBlue))
+        textField.textField.autocapitalizationType = .none
+        textField.textField.autocorrectionType = .no
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
@@ -74,14 +78,53 @@ class ContactViewController: UIViewController {
         let button = CustomButton(frame: .zero, style: .containedQuadDark)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Enviar", for: .normal)
-//        button.addTarget(self, action: #selector(tappedLoginButton), for: .touchUpInside)
+        button.addTarget(self, action: #selector(tappedSendButton), for: .touchUpInside)
         return button
     }()
+    
+    @objc func tappedSendButton() {
+        guard let name = nameTextField.textField.text, !name.isEmpty,
+              let email = emailTextField.textField.text, !email.isEmpty,
+              let message = textView.text, !message.isEmpty
+        else {
+            exibirAlerta(mensagem: "Por favor, preencha todos os campos")
+            return
+        }
+        
+        viewModel.postComment(name: name, email: email, message: message) { result in
+            switch result {
+            case .success(let message):
+                self.exibirAlerta(title: "Sucesso", mensagem: message)
+                self.clearFields()
+            case .failure(let error):
+                switch error {
+                case .noConnectivity:
+                    self.exibirAlerta(mensagem: "Sem conexão com a internet. Por favor, tente novamente mais tarde")
+                case .unauthorized(let message):
+                    self.exibirAlerta(mensagem: message ?? "Ocorreu um erro. Tente novamente mais tarde")
+                default:
+                    self.exibirAlerta(mensagem: "Erro interno no servidor.")
+                }
+            }
+        }
+    }
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+    }
+    
+    func exibirAlerta(title: String = "Erro", mensagem: String) {
+        let alert = UIAlertController(title: title, message: mensagem, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func clearFields() {
+        nameTextField.textField.text = ""
+        emailTextField.textField.text = ""
+        textView.text = ""
     }
 }
 

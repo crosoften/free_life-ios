@@ -20,7 +20,7 @@ class ContactViewModel {
             "message": message,
         ]
         
-        Service.shared.request(in: url, method: .post) { result in
+        Service.shared.request(in: url, method: .post, parameters: body) { result in
             switch result {
             case .success(let data):
                 if let data = data, let dictionary = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
