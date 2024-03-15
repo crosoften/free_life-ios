@@ -9,6 +9,8 @@ import UIKit
 
 class PrivacyPoliciesViewController: UIViewController {
     
+    let viewModel = ContentViewModel()
+    
     lazy var navBar: CustomNavigationBar = {
         let nav = CustomNavigationBar()
         nav.translatesAutoresizingMaskIntoConstraints = false
@@ -35,6 +37,11 @@ class PrivacyPoliciesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        getContent()
     }
 }
 
@@ -66,5 +73,28 @@ extension PrivacyPoliciesViewController: ViewCodeType {
         view.backgroundColor = .white
     }
     
+    private func getContent() {
+        viewModel.getContent(type: .terms) { result in
+            switch result {
+            case .success(let model):
+                self.privacyPoliciesLabel.text = model.content
+            case .failure(let error):
+                switch error {
+                case .noConnectivity:
+                    self.exibirAlerta(mensagem: "Sem conexão com a internet. Por favor, tente novamente mais tarde")
+                case .unauthorized:
+                    self.exibirAlerta(mensagem: "Email ou senha incorretos. Por favor, tente novamente")
+                default:
+                    self.exibirAlerta(mensagem: "Ocorreu um erro inesperado. Por favor, tente novamente")
+                }
+            }
+        }
+    }
+    
+    func exibirAlerta(title: String = "Erro", mensagem: String) {
+        let alert = UIAlertController(title: title, message: mensagem, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
 }
 
