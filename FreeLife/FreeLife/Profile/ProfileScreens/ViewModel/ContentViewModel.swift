@@ -22,12 +22,6 @@ enum ContentType: String {
 
 class ContentViewModel {
     
-    var dataSource: Content
-    
-    init(dataSource: Content) {
-        self.dataSource = dataSource
-    }
-    
     func getContent(type: ContentType, completion: @escaping (Result<Content, DomainError>) -> Void) {
         
         guard let url = URL(string:"https://freelifeconect.app.br:8080/texts") else { return }
@@ -39,7 +33,6 @@ class ContentViewModel {
             switch result {
             case .success(let data):
                 if let data = data, let root = try? JSONDecoder().decode(Content.self, from: data) {
-                    self.dataSource = root
                     completion(.success(root))
                 } else {
                     completion(.failure(.unexpected))
