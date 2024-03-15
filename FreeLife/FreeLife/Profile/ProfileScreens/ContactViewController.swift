@@ -43,14 +43,18 @@ class ContactViewController: UIViewController {
         return label
     }()
     
-    lazy var nameTextField: CustomTextFieldView = {
-        let textField = CustomTextFieldView(title: "Nome", placeholderLabel: "Seu nome")
+    lazy var nameTextField: CustomTextFieldUsualy = {
+        let textField = CustomTextFieldUsualy()
+        textField.titleTextField.text = "Nome"
+        textField.textField.placeholder = "Seu nome"
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
     
-    lazy var emailTextField: CustomTextFieldView = {
-        let textField = CustomTextFieldView(title: "Senha", placeholderLabel: "mail@email.com", imageset: .ds(.profileBlue))
+    lazy var emailTextField: CustomTextFieldUsualy = {
+        let textField = CustomTextFieldUsualy()
+        textField.titleTextField.text = "Senha"
+        textField.textField.placeholder = "mail@email.com"
         textField.textField.autocapitalizationType = .none
         textField.textField.autocorrectionType = .no
         textField.translatesAutoresizingMaskIntoConstraints = false
@@ -62,7 +66,7 @@ class ContactViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Mensagem"
         label.font = .dsFonts(.subTitle)
-        label.textColor = .ds(.lighGray)
+        label.textColor = .black
         return label
     }()
     

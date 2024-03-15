@@ -15,7 +15,7 @@ class ProfileViewController: UIViewController {
         ProfileCardsModel(title: "Central de ajuda", image: .ds(.help)),
         ProfileCardsModel(title: "Termos de uso", image: .ds(.terms)),
         ProfileCardsModel(title: "Políticas de privacidade", image: .ds(.privacy)),
-        ProfileCardsModel(title: "Contrato", image: .ds(.contact)),
+        ProfileCardsModel(title: "Contato", image: .ds(.contact)),
         ProfileCardsModel(title: "Sair", image: .ds(.exit)),
     ]
     
