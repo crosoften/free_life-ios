@@ -53,7 +53,7 @@ class ContactViewController: UIViewController {
     
     lazy var emailTextField: CustomTextFieldUsualy = {
         let textField = CustomTextFieldUsualy()
-        textField.titleTextField.text = "Senha"
+        textField.titleTextField.text = "Email"
         textField.textField.placeholder = "mail@email.com"
         textField.textField.autocapitalizationType = .none
         textField.textField.autocorrectionType = .no
