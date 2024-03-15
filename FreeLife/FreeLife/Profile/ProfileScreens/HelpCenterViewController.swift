@@ -31,6 +31,8 @@ class HelpCenterViewController: UIViewController {
     
     lazy var tableView: UITableView = {
        let table = UITableView()
+        table.delegate = self
+        table.dataSource = self
         table.translatesAutoresizingMaskIntoConstraints = false
         table.separatorStyle = .singleLine
         return table
