@@ -61,6 +61,7 @@
 		49A2B37F2B9F4A420003E034 /* DomainError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A2B37E2B9F4A420003E034 /* DomainError.swift */; };
 		49B166602BA466ED0003A7C9 /* HelpCenterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B1665F2BA466ED0003A7C9 /* HelpCenterViewModel.swift */; };
 		49B166622BA467270003A7C9 /* Root.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B166612BA467270003A7C9 /* Root.swift */; };
+		49B166642BA46AC50003A7C9 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B166632BA46AC50003A7C9 /* ContentViewModel.swift */; };
 		49D0B8212B9F4777001C4BB8 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D0B8202B9F4777001C4BB8 /* LoginViewModel.swift */; };
 		49D0B8242B9F479F001C4BB8 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D0B8232B9F479F001C4BB8 /* LoginModel.swift */; };
 		49DE52AE2B9B82B5006AE59D /* CustomButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DE52AD2B9B82B5006AE59D /* CustomButtonView.swift */; };
@@ -124,6 +125,7 @@
 		49A2B37E2B9F4A420003E034 /* DomainError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainError.swift; sourceTree = "<group>"; };
 		49B1665F2BA466ED0003A7C9 /* HelpCenterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpCenterViewModel.swift; sourceTree = "<group>"; };
 		49B166612BA467270003A7C9 /* Root.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Root.swift; sourceTree = "<group>"; };
+		49B166632BA46AC50003A7C9 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		49D0B8202B9F4777001C4BB8 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		49D0B8232B9F479F001C4BB8 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		49DE52AD2B9B82B5006AE59D /* CustomButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButtonView.swift; sourceTree = "<group>"; };
@@ -462,6 +464,7 @@
 			children = (
 				498B063B2BA3E66F00BA93E0 /* ContactViewModel.swift */,
 				49B1665F2BA466ED0003A7C9 /* HelpCenterViewModel.swift */,
+				49B166632BA46AC50003A7C9 /* ContentViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -656,6 +659,7 @@
 				1E8FA2F12B27931700843555 /* PrivacyPoliciesViewController.swift in Sources */,
 				1E8FA2FA2B279B2300843555 /* CustomSearchBar.swift in Sources */,
 				1E8FA28F2B239D5D00843555 /* TicketViewController.swift in Sources */,
+				49B166642BA46AC50003A7C9 /* ContentViewModel.swift in Sources */,
 				4907856A2BA078F10007868A /* NewPasswordViewModel.swift in Sources */,
 				1E8FA2612B2381DE00843555 /* TabBarController.swift in Sources */,
 				1E8FA24A2B23819300843555 /* CustomAlert.swift in Sources */,
