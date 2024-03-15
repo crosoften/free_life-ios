@@ -19,9 +19,9 @@ class Service {
                method: HTTPMethod,
                parameters: Parameters? = nil,
                headers: HTTPHeaders? = nil,
-               encoding: JSONEncoding = .default,
+               encoding: ParameterEncoding = JSONEncoding.default,
                completion: @escaping (Result<Data?, HttpError>) -> Void) {
-        session.request(url, method: method, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseData { dataResponse in
+        session.request(url, method: method, parameters: parameters, encoding: encoding, headers: headers).responseData { dataResponse in
             guard let statusCode = dataResponse.response?.statusCode else {
                 return completion(.failure(.noConnectivity)) }
             switch dataResponse.result {

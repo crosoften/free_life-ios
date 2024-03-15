@@ -1,5 +1,5 @@
 //
-//  SafetyTipsViewController.swift
+//  HelpCenterViewController.swift
 //  Jonas
 //
 //  Created by ihan carlos on 12/09/23.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SafetyTipsViewController: UIViewController {
+class HelpCenterViewController: UIViewController {
 
     lazy var navBar: CustomNavigationBar = {
         let nav = CustomNavigationBar()
@@ -33,7 +33,7 @@ class SafetyTipsViewController: UIViewController {
     }
 }
 
-extension SafetyTipsViewController: ViewCodeType {
+extension HelpCenterViewController: ViewCodeType {
     func buildViewHierarchy() {
         view.addSubview(navBar)
         view.addSubview(searchBar)

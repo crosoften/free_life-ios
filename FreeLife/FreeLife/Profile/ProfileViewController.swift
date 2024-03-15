@@ -144,7 +144,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
             navigationController?.pushViewController(vc, animated: true)
             
         case 2:
-            let vc = SafetyTipsViewController()
+            let vc = HelpCenterViewController()
             navigationController?.pushViewController(vc, animated: true)
             
         case 3:

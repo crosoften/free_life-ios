@@ -45,7 +45,7 @@
 		1E8FA2E32B2790A100843555 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FA2E22B2790A100843555 /* ProfileViewController.swift */; };
 		1E8FA2E62B2790BB00843555 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FA2E52B2790BB00843555 /* ProfileTableViewCell.swift */; };
 		1E8FA2E82B2790D600843555 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FA2E72B2790D600843555 /* ProfileModel.swift */; };
-		1E8FA2EF2B27931700843555 /* SafetyTipsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FA2EA2B27931700843555 /* SafetyTipsViewController.swift */; };
+		1E8FA2EF2B27931700843555 /* HelpCenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FA2EA2B27931700843555 /* HelpCenterViewController.swift */; };
 		1E8FA2F02B27931700843555 /* TermsOfUseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FA2EB2B27931700843555 /* TermsOfUseViewController.swift */; };
 		1E8FA2F12B27931700843555 /* PrivacyPoliciesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FA2EC2B27931700843555 /* PrivacyPoliciesViewController.swift */; };
 		1E8FA2F22B27931700843555 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FA2ED2B27931700843555 /* AboutViewController.swift */; };
@@ -106,7 +106,7 @@
 		1E8FA2E22B2790A100843555 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		1E8FA2E52B2790BB00843555 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
 		1E8FA2E72B2790D600843555 /* ProfileModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
-		1E8FA2EA2B27931700843555 /* SafetyTipsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SafetyTipsViewController.swift; sourceTree = "<group>"; };
+		1E8FA2EA2B27931700843555 /* HelpCenterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpCenterViewController.swift; sourceTree = "<group>"; };
 		1E8FA2EB2B27931700843555 /* TermsOfUseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsOfUseViewController.swift; sourceTree = "<group>"; };
 		1E8FA2EC2B27931700843555 /* PrivacyPoliciesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivacyPoliciesViewController.swift; sourceTree = "<group>"; };
 		1E8FA2ED2B27931700843555 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
@@ -402,7 +402,7 @@
 			children = (
 				498B063D2BA3E68D00BA93E0 /* Model */,
 				498B063A2BA3E65F00BA93E0 /* ViewModel */,
-				1E8FA2EA2B27931700843555 /* SafetyTipsViewController.swift */,
+				1E8FA2EA2B27931700843555 /* HelpCenterViewController.swift */,
 				1E8FA2EB2B27931700843555 /* TermsOfUseViewController.swift */,
 				1E8FA2EC2B27931700843555 /* PrivacyPoliciesViewController.swift */,
 				1E8FA2ED2B27931700843555 /* AboutViewController.swift */,
@@ -663,7 +663,7 @@
 				1E8FA22B2B237C1500843555 /* ViewController.swift in Sources */,
 				1E8FA2802B23866C00843555 /* TextFieldValitador.swift in Sources */,
 				1E8FA2892B23970C00843555 /* CustomValueCardView.swift in Sources */,
-				1E8FA2EF2B27931700843555 /* SafetyTipsViewController.swift in Sources */,
+				1E8FA2EF2B27931700843555 /* HelpCenterViewController.swift in Sources */,
 				49A2B37B2B9F49BF0003E034 /* Service.swift in Sources */,
 				49D0B8212B9F4777001C4BB8 /* LoginViewModel.swift in Sources */,
 				1E8FA2F22B27931700843555 /* AboutViewController.swift in Sources */,
