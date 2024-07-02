@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1E1D7BD92C341F4100D89925 /* CustomButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E1D7BD82C341F4100D89925 /* CustomButtonView.swift */; };
 		1E8FA2272B237C1500843555 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FA2262B237C1500843555 /* AppDelegate.swift */; };
 		1E8FA2292B237C1500843555 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FA2282B237C1500843555 /* SceneDelegate.swift */; };
 		1E8FA22B2B237C1500843555 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FA22A2B237C1500843555 /* ViewController.swift */; };
@@ -52,10 +53,10 @@
 		1E8FA2F32B27931700843555 /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FA2EE2B27931700843555 /* ContactViewController.swift */; };
 		1E8FA2F72B279A2000843555 /* CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FA2F62B279A2000843555 /* CustomNavigationBar.swift */; };
 		1E8FA2FA2B279B2300843555 /* CustomSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FA2F92B279B2300843555 /* CustomSearchBar.swift */; };
-		1E8FA2FD2B279C5D00843555 /* CustomButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FA2FC2B279C5D00843555 /* CustomButtonView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1E1D7BD82C341F4100D89925 /* CustomButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButtonView.swift; sourceTree = "<group>"; };
 		1E8FA2232B237C1500843555 /* FreeLife.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FreeLife.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E8FA2262B237C1500843555 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1E8FA2282B237C1500843555 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -103,7 +104,6 @@
 		1E8FA2EE2B27931700843555 /* ContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
 		1E8FA2F62B279A2000843555 /* CustomNavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomNavigationBar.swift; sourceTree = "<group>"; };
 		1E8FA2F92B279B2300843555 /* CustomSearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSearchBar.swift; sourceTree = "<group>"; };
-		1E8FA2FC2B279C5D00843555 /* CustomButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButtonView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +117,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1E1D7BD72C341F2200D89925 /* CustomButton */ = {
+			isa = PBXGroup;
+			children = (
+				1E1D7BD82C341F4100D89925 /* CustomButtonView.swift */,
+			);
+			path = CustomButton;
+			sourceTree = "<group>";
+		};
 		1E8FA21A2B237C1400843555 = {
 			isa = PBXGroup;
 			children = (
@@ -179,12 +187,12 @@
 			isa = PBXGroup;
 			children = (
 				1E8FA2F52B2799E500843555 /* CustomNavigationBar */,
+				1E1D7BD72C341F2200D89925 /* CustomButton */,
 				1E8FA2DE2B27908000843555 /* ProfileButtonCard */,
 				1E8FA2DB2B2780E200843555 /* CustomDetailsButton */,
 				1E8FA2872B2396E800843555 /* CustomValueCard */,
 				1E8FA2642B23836300843555 /* DSFonts */,
 				1E8FA2622B23836200843555 /* DSImage */,
-				1E8FA2FB2B279C5D00843555 /* CustomButton */,
 				1E8FA27C2B23866C00843555 /* CustomTextField */,
 				1E8FA2F82B279B2300843555 /* SearchBar */,
 				1E8FA2512B2381BB00843555 /* DSColors */,
@@ -396,15 +404,6 @@
 			path = DSColors/SearchBar;
 			sourceTree = "<group>";
 		};
-		1E8FA2FB2B279C5D00843555 /* CustomButton */ = {
-			isa = PBXGroup;
-			children = (
-				1E8FA2FC2B279C5D00843555 /* CustomButtonView.swift */,
-			);
-			name = CustomButton;
-			path = ../../../../../React/myshopp_ios/MyShopp/MyShopp/DesingSystem/CustomButton;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -516,7 +515,7 @@
 				1E8FA2812B23866C00843555 /* CustomTextFieldView.swift in Sources */,
 				1E8FA2292B237C1500843555 /* SceneDelegate.swift in Sources */,
 				1E8FA27A2B23864600843555 /* NewPasswordViewController.swift in Sources */,
-				1E8FA2FD2B279C5D00843555 /* CustomButtonView.swift in Sources */,
+				1E1D7BD92C341F4100D89925 /* CustomButtonView.swift in Sources */,
 				1E8FA26F2B23836300843555 /* DSFonts.swift in Sources */,
 				1E8FA2922B23A07400843555 /* CashbackViewController.swift in Sources */,
 			);
