@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		1E8FA2272B237C1500843555 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FA2262B237C1500843555 /* AppDelegate.swift */; };
 		1E8FA2292B237C1500843555 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FA2282B237C1500843555 /* SceneDelegate.swift */; };
-		1E8FA22B2B237C1500843555 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FA22A2B237C1500843555 /* ViewController.swift */; };
 		1E8FA2302B237C1E00843555 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1E8FA22F2B237C1E00843555 /* Assets.xcassets */; };
 		1E8FA2332B237C1E00843555 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E8FA2312B237C1E00843555 /* LaunchScreen.storyboard */; };
 		1E8FA2462B23819300843555 /* UIView+ShadowBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FA23F2B23819300843555 /* UIView+ShadowBorder.swift */; };
@@ -73,7 +72,6 @@
 		1E8FA2232B237C1500843555 /* FreeLife.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FreeLife.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E8FA2262B237C1500843555 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1E8FA2282B237C1500843555 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		1E8FA22A2B237C1500843555 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		1E8FA22F2B237C1E00843555 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1E8FA2322B237C1E00843555 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1E8FA2342B237C1E00843555 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -181,7 +179,6 @@
 				1E8FA24C2B23819C00843555 /* DesignSystem */,
 				1E8FA2262B237C1500843555 /* AppDelegate.swift */,
 				1E8FA2282B237C1500843555 /* SceneDelegate.swift */,
-				1E8FA22A2B237C1500843555 /* ViewController.swift */,
 				1E8FA22F2B237C1E00843555 /* Assets.xcassets */,
 				1E8FA2312B237C1E00843555 /* LaunchScreen.storyboard */,
 				1E8FA2342B237C1E00843555 /* Info.plist */,
@@ -682,7 +679,6 @@
 				1E8FA2D62B275BFB00843555 /* DetailsTicketViewController.swift in Sources */,
 				1E8FA2F02B27931700843555 /* TermsOfUseViewController.swift in Sources */,
 				1E8FA27B2B23864600843555 /* RecoverCodeViewController.swift in Sources */,
-				1E8FA22B2B237C1500843555 /* ViewController.swift in Sources */,
 				1E8FA2802B23866C00843555 /* TextFieldValitador.swift in Sources */,
 				1E8FA2892B23970C00843555 /* CustomValueCardView.swift in Sources */,
 				1E8FA2EF2B27931700843555 /* HelpCenterViewController.swift in Sources */,
