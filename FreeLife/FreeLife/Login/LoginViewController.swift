@@ -11,6 +11,9 @@ class LoginViewController: UIViewController {
     
     let viewModel = LoginViewModel()
     
+        var selectedCompany: String?
+        var selectedCompanyId: Int?
+    
     lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -27,31 +30,31 @@ class LoginViewController: UIViewController {
         return image
     }()
     
-    lazy var emailTextField: CustomTextFieldView = {
-        let textField = CustomTextFieldView(title: "E-mail", placeholderLabel: "mail@email.com", imageset: .ds(.profileBlue))
+    lazy var cpfTextField: CustomTextFieldView = {
+        let textField = CustomTextFieldView(title: "CPF", placeholderLabel: "000.000.000-00", imageset: .ds(.profileBlue))
         textField.textField.autocapitalizationType = .none
         textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.textField.text = "111.222.333-96"
         return textField
     }()
     
-    lazy var passwordTextField: CustomTextFieldView = {
-        let textField = CustomTextFieldView(title: "Senha", placeholderLabel: "**********", imageset: .ds(.lock))
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        return textField
-    }()
-    
-    lazy var showPasswordButton: UIButton = {
-        let button = UIButton(type: .custom)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setImage(UIImage.ds(.eye), for: .normal)
-        button.addTarget(self, action: #selector(showPasswordButtonTapped(_:)), for: .touchUpInside)
-        return button
-    }()
-    
-    @objc func showPasswordButtonTapped(_ sender: UIButton) {
-        sender.isSelected = !sender.isSelected
-        passwordTextField.textField.isSecureTextEntry = !sender.isSelected
-    }
+    lazy var companyPicker: UIPickerView = {
+            let picker = UIPickerView()
+            picker.translatesAutoresizingMaskIntoConstraints = false
+            picker.delegate = self
+            picker.dataSource = self
+            picker.isHidden = true
+            return picker
+        }()
+        
+        lazy var showPickerButton: UIButton = {
+            let button = UIButton(type: .system)
+            button.translatesAutoresizingMaskIntoConstraints = false
+            button.setTitle("Selecionar Empresa", for: .normal)
+            button.setTitleColor(UIColor(named: "default"), for: .normal)
+            button.addTarget(self, action: #selector(showPicker), for: .touchUpInside)
+            return button
+        }()
     
     lazy var loginButton: CustomButton = {
         let button = CustomButton(frame: .zero, style: .containedQuadDark)
@@ -68,81 +71,56 @@ class LoginViewController: UIViewController {
         return indicator
     }()
     
-    lazy var recoverPassword: CustomButton = {
-        let button = CustomButton(frame: .zero, style: .containedLight)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Esqueci minha senha", for: .normal)
-        button.addTarget(self, action: #selector(tappedRecoverButton), for: .touchUpInside)
-        return button
-    }()
-    
-    @objc func tappedRecoverButton() {
-        let vc = RecoverPasswordViewController()
-        navigationController?.pushViewController(vc, animated: true)
-    }
+    @objc private func showPicker() {
+           companyPicker.isHidden.toggle()
+       }
     
     @objc private func tappedLoginButton() {
         
-        guard let email = emailTextField.textField.text, !email.isEmpty,
-              let senha = passwordTextField.textField.text, !senha.isEmpty else {
+        guard let email = cpfTextField.textField.text, !email.isEmpty else {
             customAlert(title: "Erro de login", message: "Por favor, preencha todos os campos.")
             return
         }
         
-//        if !TextFieldValidator.validateText(for: .mail, text: email) {
-//            customAlert(title: "Erro de email", message: "Email incorreto. Por favor, insira um email válido.")
-//            return
-//        }
-//
-//        if !TextFieldValidator.validateText(for: .password, text: senha) {
-//            customAlert(title: "Erro de senha", message: "Sua senha está incorreta!")
-//            return
-//        }
+        guard let company = selectedCompany else {
+                    exibirAlerta(mensagem: "Por favor, selecione uma empresa.")
+                    return
+                }
+        
+
         
         startAnimation()
         
-        viewModel.login(email: email, password: senha) { result in
-            switch result {
-            case .success(let model):
-                let tabBar = TabBarController()
-                DispatchQueue.main.async {
-                    self.navigationController?.pushViewController(tabBar, animated: true)
-                }
-            case .failure(let error):
-                switch error {
-                case .noConnectivity:
-                    self.exibirAlerta(mensagem: "Sem conexão com a internet. Por favor, tente novamente mais tarde")
-                case .unauthorized:
-                    self.exibirAlerta(mensagem: "Email ou senha incorretos. Por favor, tente novamente")
-                default:
-                    self.exibirAlerta(mensagem: "Ocorreu um erro inesperado. Por favor, tente novamente")
-                }
-            }
-            self.stopAnimation()
-        }
+        let loginRequest = LoginRequest(
+            cpf: cpfTextField.textField.text ?? "",
+            companyId: selectedCompanyId ?? 0
+        )
+        
+        viewModel.login(modelRequest: loginRequest)
+
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+        viewModel.delegate = self
         
-        passwordTextField.textField.isSecureTextEntry = true
-        passwordTextField.textField.rightView = showPasswordButton
-        passwordTextField.textField.rightViewMode = .always
+        let companyRequest = CompanyRequest(status: nil, search: nil, page: nil, size: nil)
+        
+        viewModel.getCompany(modelRequest: companyRequest)
+        
     }
     
     private func startAnimation() {
         loadingIndicator.startAnimating()
         loadingIndicator.isHidden = false
         loginButton.isEnabled = false
-        recoverPassword.isEnabled = false
     }
     
     private func stopAnimation() {
         self.loadingIndicator.stopAnimating()
         self.loadingIndicator.isHidden = true
         self.loginButton.isEnabled = true
-        self.recoverPassword.isEnabled = true
     }
 }
 
@@ -150,12 +128,11 @@ extension LoginViewController: ViewCodeType {
     func buildViewHierarchy() {
         view.addSubview(titleLabel)
         view.addSubview(logoImage)
-        view.addSubview(emailTextField)
-        view.addSubview(passwordTextField)
-        view.addSubview(showPasswordButton)
+        view.addSubview(cpfTextField)
         view.addSubview(loginButton)
         view.addSubview(loadingIndicator)
-        view.addSubview(recoverPassword)
+        view.addSubview(showPickerButton)
+               view.addSubview(companyPicker)
     }
     
     func setupConstraints() {
@@ -172,7 +149,7 @@ extension LoginViewController: ViewCodeType {
             heightConstant: 107
         )
         
-        emailTextField.anchor(
+        cpfTextField.anchor(
             top: logoImage.bottomAnchor,
             left: view.leftAnchor,
             right: view.rightAnchor,
@@ -182,27 +159,26 @@ extension LoginViewController: ViewCodeType {
             heightConstant: 70
         )
         
-        passwordTextField.anchor(
-            top: emailTextField.bottomAnchor,
-            left: emailTextField.leftAnchor,
-            right: emailTextField.rightAnchor,
-            topConstant: 20,
-            heightConstant: 70
-        )
-        
-        showPasswordButton.anchor(
-            right: passwordTextField.rightAnchor,
-            centerY: passwordTextField.textField.centerYAnchor,
-            rightConstant: 25,
-            widthConstant: 20,
-            heightConstant: 16
-        )
+        showPickerButton.anchor(
+                    top: cpfTextField.bottomAnchor,
+                    left: cpfTextField.leftAnchor,
+                    right: cpfTextField.rightAnchor,
+                    topConstant: 10,
+                    heightConstant: 44
+                )
+                
+                companyPicker.anchor(
+                    top: showPickerButton.bottomAnchor,
+                    left: showPickerButton.leftAnchor,
+                    right: showPickerButton.rightAnchor,
+                    heightConstant: 70
+                )
         
         loginButton.anchor(
-            top: passwordTextField.bottomAnchor,
-            left: passwordTextField.leftAnchor,
-            right: passwordTextField.rightAnchor,
-            topConstant: 40,
+            top: companyPicker.bottomAnchor,
+            left: cpfTextField.leftAnchor,
+            right: cpfTextField.rightAnchor,
+            topConstant: 70,
             heightConstant: 50
         )
         
@@ -211,12 +187,7 @@ extension LoginViewController: ViewCodeType {
             centerY: view.centerYAnchor
         )
         
-        recoverPassword.anchor(
-            top: loginButton.bottomAnchor,
-            left: loginButton.leftAnchor,
-            right: loginButton.rightAnchor,
-            heightConstant: 40
-        )
+       
     }
     
     func setupAdditionalConfiguration() {
@@ -230,5 +201,65 @@ extension LoginViewController {
         let alert = UIAlertController(title: "Erro de Login", message: mensagem, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
+    }
+}
+
+extension LoginViewController: LoginViewModelDelegate{
+    func companySuccess() {
+        DispatchQueue.main.async {
+            // Verifique se a lista de empresas está preenchida
+            if !self.viewModel.companies.isEmpty {
+                self.companyPicker.reloadAllComponents()  // Recarrega o picker
+                self.showPickerButton.isHidden = false  // Torna o botão visível
+            } else {
+                self.showPickerButton.isHidden = true  // Se não houver empresas, esconde o botão
+            }
+        }
+    }
+    
+    func loginSuccess() {
+       
+                        DispatchQueue.main.async {
+                            let tabBar = TabBarController()
+                            self.navigationController?.pushViewController(tabBar, animated: true)
+                        }
+    }
+    
+    func loginError(message: String) {
+   
+        let alert = UIAlertController(title: "", message: message, preferredStyle: .alert)
+        let okButton = UIAlertAction(title: "Ok", style:.default)
+        alert.addAction(okButton)
+        DispatchQueue.main.async {
+            self.present(alert, animated: true, completion: nil)
+        }
+                self.stopAnimation()
+    }
+    
+    
+}
+
+// MARK: - UIPickerViewDelegate, UIPickerViewDataSource
+extension LoginViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return viewModel.companies.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        // Verifique se a quantidade de empresas é válida antes de acessar
+        guard row < viewModel.companies.count else { return nil }
+        return viewModel.companies[row].name
+    }
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if row < viewModel.companies.count {
+            selectedCompany = viewModel.companies[row].name
+            showPickerButton.setTitle(viewModel.companies[row].name, for: .normal)
+            companyPicker.isHidden = true
+            selectedCompanyId = viewModel.companies[row].id
+        }
     }
 }

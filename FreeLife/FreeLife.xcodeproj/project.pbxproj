@@ -65,6 +65,28 @@
 		49D0B8212B9F4777001C4BB8 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D0B8202B9F4777001C4BB8 /* LoginViewModel.swift */; };
 		49D0B8242B9F479F001C4BB8 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D0B8232B9F479F001C4BB8 /* LoginModel.swift */; };
 		49DE52AE2B9B82B5006AE59D /* CustomButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DE52AD2B9B82B5006AE59D /* CustomButtonView.swift */; };
+		91920E2B2D1245DC00711CE1 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91920E2A2D1245DC00711CE1 /* APIService.swift */; };
+		91920E302D12460100711CE1 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91920E2D2D12460100711CE1 /* AuthManager.swift */; };
+		91920E342D1246E100711CE1 /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91920E332D1246E100711CE1 /* LoginRequest.swift */; };
+		91920E362D12474C00711CE1 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91920E352D12474C00711CE1 /* LoginResponse.swift */; };
+		91920E382D125DDA00711CE1 /* DebitsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91920E372D125DDA00711CE1 /* DebitsRequest.swift */; };
+		91920E3A2D125EAD00711CE1 /* DebitsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91920E392D125EAD00711CE1 /* DebitsResponse.swift */; };
+		91920E3D2D125FCF00711CE1 /* TicketModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91920E3C2D125FCF00711CE1 /* TicketModel.swift */; };
+		91920E3F2D1359AD00711CE1 /* DebtsIdRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91920E3E2D1359AC00711CE1 /* DebtsIdRequest.swift */; };
+		91920E412D1359F700711CE1 /* DebtIdResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91920E402D1359F700711CE1 /* DebtIdResponse.swift */; };
+		91920E442D135E5900711CE1 /* DetailsTicketModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91920E432D135E5900711CE1 /* DetailsTicketModel.swift */; };
+		91920E472D135F7F00711CE1 /* DetailsTicketViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91920E462D135F7F00711CE1 /* DetailsTicketViewModel.swift */; };
+		91920E492D13A74100711CE1 /* CompanyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91920E482D13A74100711CE1 /* CompanyResponse.swift */; };
+		91920E4B2D13A77100711CE1 /* CompanyRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91920E4A2D13A77100711CE1 /* CompanyRequest.swift */; };
+		91920E4D2D13A82B00711CE1 /* CompanyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91920E4C2D13A82B00711CE1 /* CompanyModel.swift */; };
+		919C5E9F2D14B08700655634 /* AccountsPayableResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 919C5E9E2D14B08700655634 /* AccountsPayableResponse.swift */; };
+		919C5EA22D14C7B500655634 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 919C5EA12D14C7B500655634 /* HomeViewModel.swift */; };
+		919C5EA42D14CB3200655634 /* CashbackResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 919C5EA32D14CB3200655634 /* CashbackResponse.swift */; };
+		919C5EA72D14CBB100655634 /* CashbackModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 919C5EA62D14CBB100655634 /* CashbackModel.swift */; };
+		919C5EAA2D14CC1C00655634 /* CashbackViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 919C5EA92D14CC1C00655634 /* CashbackViewModel.swift */; };
+		919C5EAD2D14D1DB00655634 /* TicketAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 919C5EAC2D14D1DB00655634 /* TicketAlert.swift */; };
+		919C5EAF2D14D91200655634 /* SendTicketRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 919C5EAE2D14D91200655634 /* SendTicketRequest.swift */; };
+		919C5EB12D14D99300655634 /* MessageResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 919C5EB02D14D99300655634 /* MessageResponse.swift */; };
 		CAE040E9B9E3A4E3F6446481 /* Pods_FreeLife.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA9B954C06FC3CAAFDBD1B8 /* Pods_FreeLife.framework */; };
 /* End PBXBuildFile section */
 
@@ -130,6 +152,28 @@
 		49D0B8232B9F479F001C4BB8 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		49DE52AD2B9B82B5006AE59D /* CustomButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButtonView.swift; sourceTree = "<group>"; };
 		8AC1581233E8798D2D3752F7 /* Pods-FreeLife.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FreeLife.release.xcconfig"; path = "Target Support Files/Pods-FreeLife/Pods-FreeLife.release.xcconfig"; sourceTree = "<group>"; };
+		91920E2A2D1245DC00711CE1 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		91920E2D2D12460100711CE1 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
+		91920E332D1246E100711CE1 /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
+		91920E352D12474C00711CE1 /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
+		91920E372D125DDA00711CE1 /* DebitsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebitsRequest.swift; sourceTree = "<group>"; };
+		91920E392D125EAD00711CE1 /* DebitsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebitsResponse.swift; sourceTree = "<group>"; };
+		91920E3C2D125FCF00711CE1 /* TicketModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketModel.swift; sourceTree = "<group>"; };
+		91920E3E2D1359AC00711CE1 /* DebtsIdRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebtsIdRequest.swift; sourceTree = "<group>"; };
+		91920E402D1359F700711CE1 /* DebtIdResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebtIdResponse.swift; sourceTree = "<group>"; };
+		91920E432D135E5900711CE1 /* DetailsTicketModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsTicketModel.swift; sourceTree = "<group>"; };
+		91920E462D135F7F00711CE1 /* DetailsTicketViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsTicketViewModel.swift; sourceTree = "<group>"; };
+		91920E482D13A74100711CE1 /* CompanyResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyResponse.swift; sourceTree = "<group>"; };
+		91920E4A2D13A77100711CE1 /* CompanyRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyRequest.swift; sourceTree = "<group>"; };
+		91920E4C2D13A82B00711CE1 /* CompanyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyModel.swift; sourceTree = "<group>"; };
+		919C5E9E2D14B08700655634 /* AccountsPayableResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsPayableResponse.swift; sourceTree = "<group>"; };
+		919C5EA12D14C7B500655634 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		919C5EA32D14CB3200655634 /* CashbackResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashbackResponse.swift; sourceTree = "<group>"; };
+		919C5EA62D14CBB100655634 /* CashbackModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashbackModel.swift; sourceTree = "<group>"; };
+		919C5EA92D14CC1C00655634 /* CashbackViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashbackViewModel.swift; sourceTree = "<group>"; };
+		919C5EAC2D14D1DB00655634 /* TicketAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketAlert.swift; sourceTree = "<group>"; };
+		919C5EAE2D14D91200655634 /* SendTicketRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendTicketRequest.swift; sourceTree = "<group>"; };
+		919C5EB02D14D99300655634 /* MessageResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageResponse.swift; sourceTree = "<group>"; };
 		9AA9B954C06FC3CAAFDBD1B8 /* Pods_FreeLife.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FreeLife.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F42F3D852CB442F532675903 /* Pods-FreeLife.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FreeLife.debug.xcconfig"; path = "Target Support Files/Pods-FreeLife/Pods-FreeLife.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -311,6 +355,7 @@
 		1E8FA28A2B2399C700843555 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				919C5EA02D14C7A200655634 /* ViewModel */,
 				1E8FA28B2B2399E400843555 /* HomeViewController.swift */,
 			);
 			path = Home;
@@ -319,6 +364,7 @@
 		1E8FA28D2B239D3C00843555 /* Ticket */ = {
 			isa = PBXGroup;
 			children = (
+				91920E3B2D125FC300711CE1 /* Model */,
 				49B166652BA471760003A7C9 /* ViewModel */,
 				1E8FA28E2B239D5D00843555 /* TicketViewController.swift */,
 				1E8FA2D82B275C5C00843555 /* Cell */,
@@ -330,6 +376,8 @@
 		1E8FA2902B23A05500843555 /* Cashback */ = {
 			isa = PBXGroup;
 			children = (
+				919C5EA82D14CC0900655634 /* ViewModel */,
+				919C5EA52D14CB9D00655634 /* Model */,
 				1E8FA2912B23A07400843555 /* CashbackViewController.swift */,
 				1E8FA2932B23A36200843555 /* Cell */,
 			);
@@ -355,6 +403,9 @@
 		1E8FA2D72B275C4D00843555 /* DetailsTicket */ = {
 			isa = PBXGroup;
 			children = (
+				919C5EAB2D14D1BE00655634 /* Alert */,
+				91920E452D135F6D00711CE1 /* ViewModel */,
+				91920E422D135E4B00711CE1 /* Model */,
 				1E8FA2D52B275BFB00843555 /* DetailsTicketViewController.swift */,
 			);
 			path = DetailsTicket;
@@ -483,6 +534,8 @@
 				49A2B37A2B9F49BF0003E034 /* Service.swift */,
 				49A2B37C2B9F49FE0003E034 /* HTTPError.swift */,
 				49A2B37E2B9F4A420003E034 /* DomainError.swift */,
+				91920E2E2D12460100711CE1 /* Managers */,
+				91920E292D1245CC00711CE1 /* APIService */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -507,6 +560,7 @@
 			isa = PBXGroup;
 			children = (
 				49D0B8232B9F479F001C4BB8 /* LoginModel.swift */,
+				91920E4C2D13A82B00711CE1 /* CompanyModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -517,6 +571,106 @@
 				49DE52AD2B9B82B5006AE59D /* CustomButtonView.swift */,
 			);
 			path = CustomButton;
+			sourceTree = "<group>";
+		};
+		91920E292D1245CC00711CE1 /* APIService */ = {
+			isa = PBXGroup;
+			children = (
+				91920E2A2D1245DC00711CE1 /* APIService.swift */,
+				91920E312D1246C500711CE1 /* Requests */,
+				91920E322D1246CE00711CE1 /* Responses */,
+			);
+			path = APIService;
+			sourceTree = "<group>";
+		};
+		91920E2E2D12460100711CE1 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				91920E2D2D12460100711CE1 /* AuthManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		91920E312D1246C500711CE1 /* Requests */ = {
+			isa = PBXGroup;
+			children = (
+				91920E332D1246E100711CE1 /* LoginRequest.swift */,
+				91920E372D125DDA00711CE1 /* DebitsRequest.swift */,
+				91920E3E2D1359AC00711CE1 /* DebtsIdRequest.swift */,
+				91920E4A2D13A77100711CE1 /* CompanyRequest.swift */,
+				919C5EAE2D14D91200655634 /* SendTicketRequest.swift */,
+			);
+			path = Requests;
+			sourceTree = "<group>";
+		};
+		91920E322D1246CE00711CE1 /* Responses */ = {
+			isa = PBXGroup;
+			children = (
+				91920E352D12474C00711CE1 /* LoginResponse.swift */,
+				91920E392D125EAD00711CE1 /* DebitsResponse.swift */,
+				91920E402D1359F700711CE1 /* DebtIdResponse.swift */,
+				91920E482D13A74100711CE1 /* CompanyResponse.swift */,
+				919C5E9E2D14B08700655634 /* AccountsPayableResponse.swift */,
+				919C5EA32D14CB3200655634 /* CashbackResponse.swift */,
+				919C5EB02D14D99300655634 /* MessageResponse.swift */,
+			);
+			path = Responses;
+			sourceTree = "<group>";
+		};
+		91920E3B2D125FC300711CE1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				91920E3C2D125FCF00711CE1 /* TicketModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		91920E422D135E4B00711CE1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				91920E432D135E5900711CE1 /* DetailsTicketModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		91920E452D135F6D00711CE1 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				91920E462D135F7F00711CE1 /* DetailsTicketViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		919C5EA02D14C7A200655634 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				919C5EA12D14C7B500655634 /* HomeViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		919C5EA52D14CB9D00655634 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				919C5EA62D14CBB100655634 /* CashbackModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		919C5EA82D14CC0900655634 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				919C5EA92D14CC1C00655634 /* CashbackViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		919C5EAB2D14D1BE00655634 /* Alert */ = {
+			isa = PBXGroup;
+			children = (
+				919C5EAC2D14D1DB00655634 /* TicketAlert.swift */,
+			);
+			path = Alert;
 			sourceTree = "<group>";
 		};
 		940A7F41210AC6584FC20346 /* Pods */ = {
@@ -647,53 +801,75 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				919C5EB12D14D99300655634 /* MessageResponse.swift in Sources */,
 				49A2B37D2B9F49FE0003E034 /* HTTPError.swift in Sources */,
 				1E8FA2782B23864600843555 /* LoginViewController.swift in Sources */,
 				49A2B37F2B9F4A420003E034 /* DomainError.swift in Sources */,
 				1E8FA2F32B27931700843555 /* ContactViewController.swift in Sources */,
 				1E8FA2462B23819300843555 /* UIView+ShadowBorder.swift in Sources */,
 				49D0B8242B9F479F001C4BB8 /* LoginModel.swift in Sources */,
+				91920E362D12474C00711CE1 /* LoginResponse.swift in Sources */,
+				91920E3D2D125FCF00711CE1 /* TicketModel.swift in Sources */,
 				1E8FA2E62B2790BB00843555 /* ProfileTableViewCell.swift in Sources */,
 				1E8FA2472B23819300843555 /* UIView+AutoLayout.swift in Sources */,
 				1E8FA2E02B27908000843555 /* CustomProfileButtonCard.swift in Sources */,
 				1E8FA2482B23819300843555 /* Extension+UIColor.swift in Sources */,
 				1E8FA2E32B2790A100843555 /* ProfileViewController.swift in Sources */,
+				91920E442D135E5900711CE1 /* DetailsTicketModel.swift in Sources */,
+				919C5EA72D14CBB100655634 /* CashbackModel.swift in Sources */,
 				1E8FA26B2B23836300843555 /* DSImage.swift in Sources */,
 				1E8FA2E82B2790D600843555 /* ProfileModel.swift in Sources */,
 				1E8FA28C2B2399E400843555 /* HomeViewController.swift in Sources */,
+				919C5EA22D14C7B500655634 /* HomeViewModel.swift in Sources */,
 				1E8FA25B2B2381BE00843555 /* DSColors.swift in Sources */,
 				49B166602BA466ED0003A7C9 /* HelpCenterViewModel.swift in Sources */,
+				91920E4D2D13A82B00711CE1 /* CompanyModel.swift in Sources */,
 				490785652BA06FB00007868A /* RecoverPasswordViewModel.swift in Sources */,
 				1E8FA2F12B27931700843555 /* PrivacyPoliciesViewController.swift in Sources */,
 				1E8FA2FA2B279B2300843555 /* CustomSearchBar.swift in Sources */,
 				1E8FA28F2B239D5D00843555 /* TicketViewController.swift in Sources */,
 				49B166642BA46AC50003A7C9 /* ContentViewModel.swift in Sources */,
 				4907856A2BA078F10007868A /* NewPasswordViewModel.swift in Sources */,
+				91920E472D135F7F00711CE1 /* DetailsTicketViewModel.swift in Sources */,
+				91920E2B2D1245DC00711CE1 /* APIService.swift in Sources */,
 				1E8FA2612B2381DE00843555 /* TabBarController.swift in Sources */,
 				1E8FA24A2B23819300843555 /* CustomAlert.swift in Sources */,
+				91920E382D125DDA00711CE1 /* DebitsRequest.swift in Sources */,
+				919C5EAF2D14D91200655634 /* SendTicketRequest.swift in Sources */,
+				919C5E9F2D14B08700655634 /* AccountsPayableResponse.swift in Sources */,
 				1E8FA2F72B279A2000843555 /* CustomNavigationBar.swift in Sources */,
 				1E8FA2952B23A39B00843555 /* HistoricTableViewCell.swift in Sources */,
 				1E8FA2DD2B27810500843555 /* CustomDetailsButton.swift in Sources */,
+				919C5EA42D14CB3200655634 /* CashbackResponse.swift in Sources */,
 				498B063C2BA3E66F00BA93E0 /* ContactViewModel.swift in Sources */,
 				1E8FA2792B23864600843555 /* RecoverPasswordViewController.swift in Sources */,
 				1E8FA2D62B275BFB00843555 /* DetailsTicketViewController.swift in Sources */,
+				91920E302D12460100711CE1 /* AuthManager.swift in Sources */,
 				1E8FA2F02B27931700843555 /* TermsOfUseViewController.swift in Sources */,
+				91920E492D13A74100711CE1 /* CompanyResponse.swift in Sources */,
 				1E8FA27B2B23864600843555 /* RecoverCodeViewController.swift in Sources */,
 				1E8FA2802B23866C00843555 /* TextFieldValitador.swift in Sources */,
+				919C5EAA2D14CC1C00655634 /* CashbackViewModel.swift in Sources */,
+				91920E3F2D1359AD00711CE1 /* DebtsIdRequest.swift in Sources */,
 				1E8FA2892B23970C00843555 /* CustomValueCardView.swift in Sources */,
 				1E8FA2EF2B27931700843555 /* HelpCenterViewController.swift in Sources */,
 				49B166672BA471840003A7C9 /* TicketViewModel.swift in Sources */,
 				49A2B37B2B9F49BF0003E034 /* Service.swift in Sources */,
 				49D0B8212B9F4777001C4BB8 /* LoginViewModel.swift in Sources */,
+				91920E4B2D13A77100711CE1 /* CompanyRequest.swift in Sources */,
 				1E8FA2F22B27931700843555 /* AboutViewController.swift in Sources */,
 				1E8FA2982B23A81900843555 /* RequestCashBackViewController.swift in Sources */,
+				91920E342D1246E100711CE1 /* LoginRequest.swift in Sources */,
 				1E8FA2492B23819300843555 /* ViewCodeType.swift in Sources */,
 				1E8FA2272B237C1500843555 /* AppDelegate.swift in Sources */,
 				1E8FA2DA2B275C7E00843555 /* DetailsTicketTableViewCell.swift in Sources */,
+				919C5EAD2D14D1DB00655634 /* TicketAlert.swift in Sources */,
 				1E8FA2812B23866C00843555 /* CustomTextFieldView.swift in Sources */,
 				1E8FA2292B237C1500843555 /* SceneDelegate.swift in Sources */,
 				490785682BA074630007868A /* CustomTextFieldUsualy.swift in Sources */,
 				1E8FA27A2B23864600843555 /* NewPasswordViewController.swift in Sources */,
+				91920E412D1359F700711CE1 /* DebtIdResponse.swift in Sources */,
+				91920E3A2D125EAD00711CE1 /* DebitsResponse.swift in Sources */,
 				49DE52AE2B9B82B5006AE59D /* CustomButtonView.swift in Sources */,
 				1E8FA26F2B23836300843555 /* DSFonts.swift in Sources */,
 				1E8FA2922B23A07400843555 /* CashbackViewController.swift in Sources */,

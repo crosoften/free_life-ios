@@ -58,7 +58,7 @@ class RequestCashBackViewController: UIViewController {
         let button = CustomButton(frame: .zero, style: .containedQuadDark)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Solicitar pix", for: .normal)
-//        button.addTarget(self, action: #selector(tappedLoginButton), for: .touchUpInside)
+        button.addTarget(self, action: #selector(tappedButton), for: .touchUpInside)
         return button
     }()
     
@@ -66,13 +66,17 @@ class RequestCashBackViewController: UIViewController {
         let button = CustomButton(frame: .zero, style: .borderButton)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Abater na proxima fatura", for: .normal)
-//        button.addTarget(self, action: #selector(tappedLoginButton), for: .touchUpInside)
+       button.addTarget(self, action: #selector(tappedButton), for: .touchUpInside)
         return button
     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+    }
+    
+    @objc func tappedButton(){
+        navigationController?.popViewController(animated: true)
     }
 }
 

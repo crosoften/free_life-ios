@@ -1,24 +1,24 @@
 //
-//  TicketViewModel.swift
+//  CashbackViewModel.swift
 //  FreeLife
 //
-//  Created by Nikolas Gianoglou on 15/03/24.
+//  Created by Rafaella Rodrigues Santos on 19/12/24.
 //
 
 import UIKit
 
-protocol TicketViewModelDelegate: AnyObject{
-    func success(value: String)
+protocol CashbackViewModelDelegate: AnyObject{
+    func success(value: Double)
     func error(message: String)
    
 }
 
-class TicketViewModel{
+class CashbackViewModel{
     
     //MARK: Variables and Constants
-    weak var delegate: TicketViewModelDelegate?
+    weak var delegate: CashbackViewModelDelegate?
     let apiService: APIService
-    var ticket: [TicketModel] = []
+    var cashback: [CashbackModel] = []
    
     
     //MARK: Initializers
@@ -26,25 +26,20 @@ class TicketViewModel{
         self.apiService = apiService
     }
     
-    func getTicket(){
-        apiService.getDebitsIxcsoft() { [weak self] result in
+    func getCashback(){
+        apiService.getCashback() { [weak self] result in
             guard let self = self else {return}
             switch result {
             case .success(let success):
-                ticket.removeAll()
-                let ticketResponse = success.result.registros
-                for i in ticketResponse{
-                    let tickets = TicketModel(
-                        date: i.dataVencimento,
-                        createDate: i.dataEmissao,
-                        value: i.valor,
-                        originalValue: i.valor,
-                        typePayment: i.tipoPagamento,
-                        code: i.codigoBarras
-                        )
-                    ticket.append(tickets)
+                cashback.removeAll()
+                for i in success{
+                    let cashbacks = CashbackModel(
+                        value: i.value,
+                        date: i.date)
+                    cashback.append(cashbacks)
+                    delegate?.success(value: i.value)
                 }
-                delegate?.success(value:  success.result.registros.first?.valor ?? "")
+                
                 print(success)
             case .failure(let error):
                 if let error = error as? APIMessageError{
@@ -57,17 +52,17 @@ class TicketViewModel{
         }
     }
     
-    var numberOfTickets: Int{
-        return ticket.count
+    var numberOfCashbacks: Int{
+        return cashback.count
     }
     
-    func getTicket(index: Int) -> TicketModel{
-        return ticket[index]
+    func getCashbacks(index: Int) -> CashbackModel{
+        return cashback[index]
     }
     
     func calculateTotalValue() -> Double {
-        return ticket.reduce(0) { partialResult, ticket in
-            partialResult + (Double(ticket.value) ?? 0)
+        return cashback.reduce(0) { partialResult, cashback in
+            partialResult + (Double(cashback.value) ?? 0)
         }
     }
 
@@ -82,5 +77,6 @@ class TicketViewModel{
     }
     
 }
+
 
 

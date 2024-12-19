@@ -12,18 +12,18 @@ class DetailsTicketTableViewCell: UITableViewCell {
     static let identifier: String = "DetailsTicketTableViewCell"
     
     lazy var dayLabel: UILabel = {
-       let label = UILabel()
+        let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Vencimento: 00/00/00"
+        // label.text = "Vencimento: 00/00/00"
         label.font = .dsFonts(.subText)
         label.textColor = .black
         return label
     }()
     
     lazy var priceLabel: UILabel = {
-       let label = UILabel()
+        let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "R$ 00,00"
+        // label.text = "R$ 00,00"
         label.font = .dsFonts(.subText)
         label.textColor = .black
         return label
@@ -35,7 +35,7 @@ class DetailsTicketTableViewCell: UITableViewCell {
         image.image = .ds(.down)
         return image
     }()
-
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupView()
@@ -43,6 +43,13 @@ class DetailsTicketTableViewCell: UITableViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setupCell(ticket: TicketModel){
+        
+        dayLabel.text = "Vencimento:\(ticket.date)"
+        priceLabel.text = "R$\(ticket.value)"
+        
     }
 }
 

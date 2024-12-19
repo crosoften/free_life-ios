@@ -9,6 +9,8 @@ import UIKit
 
 class CashbackViewController: UIViewController {
     
+    let viewModel = CashbackViewModel()
+    
     lazy var cashLabel: UILabel = {
        let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -21,9 +23,9 @@ class CashbackViewController: UIViewController {
     lazy var invoiceCard: CustomValueCardView = {
         let card = CustomValueCardView()
         card.translatesAutoresizingMaskIntoConstraints = false
-        card.moneyLabel.text = "R$ 00,00"
+       // card.moneyLabel.text = "R$ 00,00"
         card.fatureLabel.text = "VALOR PARA SAQUE"
-        card.monthLabel.text = "DATA PARA RESGATE: 00/00/00"
+       // card.monthLabel.text = "DATA PARA RESGATE: 00/00/00"
         return card
     }()
     
@@ -56,14 +58,16 @@ class CashbackViewController: UIViewController {
     }()
     
     @objc func tappedSendButton() {
-        let navigationController = UINavigationController(rootViewController: RequestCashBackViewController())
-        present(navigationController, animated: true, completion: nil)
-        self.navigationController?.modalPresentationStyle = .pageSheet
+//        let navigationController = UINavigationController(rootViewController: RequestCashBackViewController())
+//        present(navigationController, animated: true, completion: nil)
+//        self.navigationController?.modalPresentationStyle = .pageSheet
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+        viewModel.getCashback()
+        viewModel.delegate = self
     }
 }
 
@@ -127,16 +131,38 @@ extension CashbackViewController: ViewCodeType {
 
 extension CashbackViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 6
+        return viewModel.numberOfCashbacks
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: HistoricTableViewCell.identifier, for: indexPath) as? HistoricTableViewCell
-        
+        let cashback = viewModel.getCashbacks(index: indexPath.row)
+        cell?.setupCell(cashback: cashback)
         return cell ?? UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50
     }
+}
+
+extension CashbackViewController: CashbackViewModelDelegate{
+    func success(value: Double) {
+        DispatchQueue.main.async {
+            self.historicTableView.reloadData()
+            let totalValue = self.viewModel.calculateTotalValue()
+            let formattedValue = self.viewModel.formatCurrency(value: totalValue)
+                    self.invoiceCard.moneyLabel.text = formattedValue      }
+    }
+    
+    func error(message: String) {
+        let alert = UIAlertController(title: "", message: message, preferredStyle: .alert)
+        let okButton = UIAlertAction(title: "Ok", style:.default)
+        alert.addAction(okButton)
+        DispatchQueue.main.async {
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    
 }

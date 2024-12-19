@@ -1,22 +1,22 @@
 //
-//  TicketViewModel.swift
+//  HomeViewModel.swift
 //  FreeLife
 //
-//  Created by Nikolas Gianoglou on 15/03/24.
+//  Created by Rafaella Rodrigues Santos on 19/12/24.
 //
 
 import UIKit
 
-protocol TicketViewModelDelegate: AnyObject{
+protocol HomeViewModelDelegate: AnyObject{
     func success(value: String)
     func error(message: String)
    
 }
 
-class TicketViewModel{
+class HomeViewModel{
     
     //MARK: Variables and Constants
-    weak var delegate: TicketViewModelDelegate?
+    weak var delegate: HomeViewModelDelegate?
     let apiService: APIService
     var ticket: [TicketModel] = []
    
@@ -82,5 +82,6 @@ class TicketViewModel{
     }
     
 }
+
 
 

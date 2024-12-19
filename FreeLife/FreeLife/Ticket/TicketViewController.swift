@@ -9,6 +9,8 @@ import UIKit
 
 class TicketViewController: UIViewController {
     
+    let viewModel = TicketViewModel()
+    
     lazy var debitsLabel: UILabel = {
        let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -21,9 +23,9 @@ class TicketViewController: UIViewController {
     lazy var invoiceCard: CustomValueCardView = {
         let card = CustomValueCardView()
         card.translatesAutoresizingMaskIntoConstraints = false
-        card.moneyLabel.text = "R$ 00,00"
-        card.fatureLabel.text = "FATURA PENDENTE"
-        card.monthLabel.text = "SETEMBRO"
+       // card.moneyLabel.text = "R$ 00,00"
+        card.fatureLabel.text = "FATURAS PENDENTES"
+            // card.monthLabel.text = "SETEMBRO"
         return card
     }()
     
@@ -49,6 +51,8 @@ class TicketViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+        viewModel.getTicket()
+        viewModel.delegate = self
     }
 }
 
@@ -100,21 +104,45 @@ extension TicketViewController: ViewCodeType {
 
 extension TicketViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 8
+        return viewModel.numberOfTickets
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: DetailsTicketTableViewCell.identifier, for: indexPath) as? DetailsTicketTableViewCell
-        
-        return cell ?? UITableViewCell()
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: DetailsTicketTableViewCell.identifier, for: indexPath) as? DetailsTicketTableViewCell else { return UITableViewCell() }
+        let ticket = viewModel.getTicket(index: indexPath.row)
+        cell.setupCell(ticket: ticket)
+        return cell
     }
+    
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 40
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = DetailsTicketViewController()
+        let ticket = viewModel.getTicket(index: indexPath.row)
+        let vc = DetailsTicketViewController(ticket: ticket)
         navigationController?.pushViewController(vc, animated: true)
     }
+}
+
+extension TicketViewController: TicketViewModelDelegate{
+    func success(value: String) {
+        DispatchQueue.main.async {
+            self.lastTableView.reloadData()
+            let totalValue = self.viewModel.calculateTotalValue()
+            let formattedValue = self.viewModel.formatCurrency(value: totalValue)
+                    self.invoiceCard.moneyLabel.text = formattedValue      }
+    }
+    
+    func error(message: String) {
+        let alert = UIAlertController(title: "", message: message, preferredStyle: .alert)
+        let okButton = UIAlertAction(title: "Ok", style:.default)
+        alert.addAction(okButton)
+        DispatchQueue.main.async {
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
+   
 }

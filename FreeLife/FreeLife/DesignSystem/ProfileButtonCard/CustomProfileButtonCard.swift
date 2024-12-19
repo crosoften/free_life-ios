@@ -12,6 +12,7 @@ class CustomProfileButtonCard: UIView {
     lazy var imageCard: UIImageView = {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
+        image.tintColor = UIColor(named: "default")
         return image
     }()
     

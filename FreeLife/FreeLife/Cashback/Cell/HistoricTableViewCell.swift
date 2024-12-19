@@ -14,7 +14,7 @@ class HistoricTableViewCell: UITableViewCell {
     lazy var dateLabel: UILabel = {
        let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Data: 00/00/00"
+       // label.text = "Data: 00/00/00"
         label.font = .dsFonts(.subText)
         label.textColor = .black
         return label
@@ -23,7 +23,7 @@ class HistoricTableViewCell: UITableViewCell {
     lazy var paymentLabel: UILabel = {
        let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Pagamento: R$ 00,00"
+       // label.text = "Pagamento: R$ 00,00"
         label.font = .dsFonts(.subText)
         label.textColor = .black
         return label
@@ -32,7 +32,7 @@ class HistoricTableViewCell: UITableViewCell {
     lazy var priceLabel: UILabel = {
        let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "R$ 00,00"
+      //  label.text = "R$ 00,00"
         label.font = .dsFonts(.subText)
         label.textColor = .black
         return label
@@ -45,6 +45,14 @@ class HistoricTableViewCell: UITableViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setupCell(cashback: CashbackModel){
+        
+        dateLabel.text = "Data: \(cashback.date)"
+        paymentLabel.text = "Pagamento: R$ \(cashback.value)"
+        priceLabel.text = "R$ \(cashback.value)"
+        
     }
 }
 

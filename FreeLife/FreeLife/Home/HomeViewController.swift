@@ -9,14 +9,7 @@ import UIKit
 
 class HomeViewController: UIViewController {
     
-    lazy var userImage: UIImageView = {
-       let image = UIImageView()
-        image.translatesAutoresizingMaskIntoConstraints = false
-        image.clipsToBounds = true
-        image.layer.cornerRadius = 24
-        image.backgroundColor = .lightGray
-        return image
-    }()
+    let viewModel = HomeViewModel()
     
     lazy var welcomeLabel: UILabel = {
        let label = UILabel()
@@ -39,9 +32,9 @@ class HomeViewController: UIViewController {
     lazy var invoiceCard: CustomValueCardView = {
         let card = CustomValueCardView()
         card.translatesAutoresizingMaskIntoConstraints = false
-        card.moneyLabel.text = "R$ 00,00"
-        card.fatureLabel.text = "FATURA"
-        card.monthLabel.text = "SETEMBRO"
+        //card.moneyLabel.text = "R$ 00,00"
+        card.fatureLabel.text = "FATURAS PENDENTES"
+       // card.monthLabel.text = "SETEMBRO"
         return card
     }()
     
@@ -55,32 +48,25 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+        viewModel.getTicket()
+        viewModel.delegate = self
     }
 }
 
 extension HomeViewController: ViewCodeType {
     func buildViewHierarchy() {
-        view.addSubview(userImage)
         view.addSubview(welcomeLabel)
         view.addSubview(userNameLabel)
         view.addSubview(invoiceCard)
-        view.addSubview(chartImage)
+//        view.addSubview(chartImage)
     }
     
     func setupConstraints() {
-        userImage.anchor(
-            top: view.safeAreaLayoutGuide.topAnchor,
-            left: view.leftAnchor,
-            topConstant: 20,
-            leftConstant: 20,
-            widthConstant: 50,
-            heightConstant: 50
-        )
         
         welcomeLabel.anchor(
-            left: userImage.rightAnchor,
-            bottom: userImage.centerYAnchor,
-            leftConstant: 8
+            top: view.safeAreaLayoutGuide.topAnchor,
+            left: view.leftAnchor,
+            leftConstant: 20
         )
         
         userNameLabel.anchor(
@@ -90,27 +76,47 @@ extension HomeViewController: ViewCodeType {
         )
         
         invoiceCard.anchor(
-            top: userImage.bottomAnchor,
+            top: userNameLabel.bottomAnchor,
             left: view.leftAnchor,
             right: view.rightAnchor,
-            topConstant: 20,
+            topConstant: 80,
             leftConstant: 20,
             rightConstant: 20,
             heightConstant: 120
         )
         
-        chartImage.anchor(
-            top: invoiceCard.bottomAnchor,
-            left: view.leftAnchor,
-            right: view.rightAnchor,
-            topConstant: 20,
-            leftConstant: 20,
-            rightConstant: 20,
-            heightConstant: 226
-        )
+//        chartImage.anchor(
+//            top: invoiceCard.bottomAnchor,
+//            left: view.leftAnchor,
+//            right: view.rightAnchor,
+//            topConstant: 20,
+//            leftConstant: 20,
+//            rightConstant: 20,
+//            heightConstant: 226
+//        )
     }
     
     func setupAdditionalConfiguration() {
         view.backgroundColor = .white
     }
+}
+
+extension HomeViewController: HomeViewModelDelegate{
+    func success(value: String) {
+        DispatchQueue.main.async {
+            let totalValue = self.viewModel.calculateTotalValue()
+            let formattedValue = self.viewModel.formatCurrency(value: totalValue)
+                    self.invoiceCard.moneyLabel.text = formattedValue      }
+    }
+    
+    func error(message: String) {
+        let alert = UIAlertController(title: "", message: message, preferredStyle: .alert)
+        let okButton = UIAlertAction(title: "Ok", style:.default)
+        alert.addAction(okButton)
+        DispatchQueue.main.async {
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    
 }

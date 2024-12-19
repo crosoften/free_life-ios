@@ -16,7 +16,7 @@ class Service {
     private init() {}
     
     func request(in url: URL,
-               method: HTTPMethod,
+               method: Alamofire.HTTPMethod, // Especifica o tipo de HTTPMethod do Alamofire
                parameters: Parameters? = nil,
                headers: HTTPHeaders? = nil,
                encoding: ParameterEncoding = JSONEncoding.default,
