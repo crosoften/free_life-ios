@@ -380,7 +380,7 @@ class APIService {
             parameters["size"] = size
         }
         
-        request(method: .get, endpoint: endpoint, parameters: parameters, tokenRequired: true, completion: completion)
+        request(method: .get, endpoint: endpoint, parameters: parameters, tokenRequired: false, completion: completion)
     }
     
     func getDebitsIxcsoft( completion: @escaping(Result<AccountsPayableResponse,Error>) -> Void){

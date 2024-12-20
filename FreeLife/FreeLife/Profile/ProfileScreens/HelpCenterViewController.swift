@@ -121,7 +121,7 @@ extension HelpCenterViewController {
                 case .unauthorized:
                     self.exibirAlerta(mensagem: "Erro inesperado ao carregar a lista de cameras")
                 default:
-                    self.exibirAlerta(mensagem: "Ocorreu um erro inesperado. Por favor, tente novamente")
+                    self.exibirAlerta(mensagem: "No momento não temos perguntas disponíveis")
                 }
             }
         }

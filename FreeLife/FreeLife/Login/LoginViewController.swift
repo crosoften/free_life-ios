@@ -92,7 +92,7 @@ class LoginViewController: UIViewController {
         startAnimation()
         
         let loginRequest = LoginRequest(
-            cpf: cpfTextField.textField.text ?? "",
+            cpf: cpfTextField.textField.text ?? "vazio",
             companyId: selectedCompanyId ?? 0
         )
         
@@ -105,9 +105,12 @@ class LoginViewController: UIViewController {
         setupView()
         viewModel.delegate = self
         
-        let companyRequest = CompanyRequest(status: nil, search: nil, page: nil, size: nil)
+        DispatchQueue.main.async {
+            let companyRequest = CompanyRequest(status: nil, search: nil, page: nil, size: nil)
+            
+            self.viewModel.getCompany(modelRequest: companyRequest)
+        }
         
-        viewModel.getCompany(modelRequest: companyRequest)
         
     }
     

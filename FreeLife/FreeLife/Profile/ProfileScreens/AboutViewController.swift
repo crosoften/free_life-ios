@@ -148,7 +148,7 @@ extension AboutViewController: ViewCodeType {
                 case .unauthorized:
                     self.exibirAlerta(mensagem: "Email ou senha incorretos. Por favor, tente novamente")
                 default:
-                    self.exibirAlerta(mensagem: "Ocorreu um erro inesperado. Por favor, tente novamente")
+                    self.exibirAlerta(mensagem: "No momento não temos perguntas disponi")
                 }
             }
         }
