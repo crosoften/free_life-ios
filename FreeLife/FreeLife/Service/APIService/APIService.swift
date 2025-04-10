@@ -34,7 +34,8 @@ class APIService {
     
     func request<T: Codable>(method: HTTPMethod, endpoint: String, parameters: [String: Any]? = nil, tokenRequired: Bool? = true, completion: @escaping (Result<T, Error>) -> Void) {
         
-        var urlComponents = URLComponents(string: "https://freelifeconect.app.br:8080\(endpoint)")!
+        var urlComponents = URLComponents(string: "\(BaseUrlManager.baseUrl)\(endpoint)")!
+//        var urlComponents = URLComponents(string: "https://freelifeconect.app.br:8080\(endpoint)")!
         
         if method == .get, let parameters = parameters {
             var queryItems = [URLQueryItem]()
@@ -327,6 +328,23 @@ class APIService {
     }
 
     
+    func requestCashBack(modelRequest: RequestCashBack, completion: @escaping(Result<RequestCashbackResponse,Error>) -> Void) {
+        let endpoint = "/cashbacks"
+        
+        let parameters: [String: Any] = [
+            "date" : modelRequest.date,
+            "value" : modelRequest.value,
+            "redeemed" : modelRequest.redeemed,
+            "status" : modelRequest.status,
+            "solicitation" : modelRequest.solicitation,
+            "userId" : modelRequest.userId,
+            "companyId" : modelRequest.companyId,
+        ]
+        
+        request(method: .post, endpoint: endpoint, parameters: parameters, tokenRequired: true, completion: completion)
+    }
+
+    
     // MARK: GET METHODS
     
     func getDebits(modelRequest: DebitsRequest,completion: @escaping(Result<DebitsResponse,Error>) -> Void){
@@ -391,6 +409,18 @@ class APIService {
     
     func getCashback( completion: @escaping(Result<[CashBackData],Error>) -> Void){
         let endpoint = "/cashbacks"
+        
+        request(method: .get, endpoint: endpoint,tokenRequired: true, completion: completion)
+    }
+    
+    func getCashbackListAndValue( completion: @escaping(Result<CashbackListResponse,Error>) -> Void){
+        let endpoint = "/cashbacks/bills-history"
+        
+        request(method: .get, endpoint: endpoint,tokenRequired: true, completion: completion)
+    }
+    
+    func getMyself( completion: @escaping(Result<MySelfResponse,Error>) -> Void){
+        let endpoint = "/auth/myself"
         
         request(method: .get, endpoint: endpoint,tokenRequired: true, completion: completion)
     }

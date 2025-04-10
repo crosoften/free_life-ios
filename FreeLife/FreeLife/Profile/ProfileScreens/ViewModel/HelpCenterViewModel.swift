@@ -13,7 +13,7 @@ class HelpCenterViewModel {
     
     func getFAQ(completion: @escaping (Result<Root, DomainError>) -> Void) {
 
-        guard let url = URL(string:"https://freelifeconect.app.br:8080/faqs") else { return }
+        guard let url = URL(string:"\(BaseUrlManager.baseUrl)/faqs") else { return }
         
         Service.shared.request(in: url, method: .get) { result in
             switch result {

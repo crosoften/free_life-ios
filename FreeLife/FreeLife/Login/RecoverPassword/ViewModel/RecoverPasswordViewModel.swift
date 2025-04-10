@@ -13,7 +13,7 @@ class RecoverPasswordViewModel {
     public var service = Service.shared
     
     func postGetCode(email: String, completion: @escaping (Result<String, DomainError>) -> Void) {
-        guard let url = URL(string: "https://freelifeconect.app.br:8080/auth/forgot-password") else {return}
+        guard let url = URL(string: "\(BaseUrlManager.baseUrl)/auth/forgot-password") else {return}
         let body: Parameters = [
             "credential": email
         ]

@@ -49,11 +49,37 @@ class HistoricTableViewCell: UITableViewCell {
     
     func setupCell(cashback: CashbackModel){
         
-        dateLabel.text = "Data: \(cashback.date)"
+        dateLabel.text = "Data: \(formatarData(cashback.date))"
         paymentLabel.text = "Pagamento: R$ \(cashback.value)"
-        priceLabel.text = "R$ \(cashback.value)"
-        
+        priceLabel.text = formatCurrency(value: cashback.cashBackValue)
     }
+    func formatarData(_ dataString: String) -> String {
+        let inputFormatter = DateFormatter()
+        inputFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        inputFormatter.locale = Locale(identifier: "en_US_POSIX") // garante parsing correto
+        inputFormatter.timeZone = TimeZone(secondsFromGMT: 0) // se quiser manter horário UTC
+
+        let outputFormatter = DateFormatter()
+        outputFormatter.dateFormat = "dd/MM/yyyy"
+        outputFormatter.timeZone = TimeZone.current // ou .secondsFromGMT(0) se quiser GMT
+
+        if let date = inputFormatter.date(from: dataString) {
+            return outputFormatter.string(from: date)
+        } else {
+            return ""
+        }
+    }
+    func formatCurrency(value: Double) -> String {
+        let formatter = NumberFormatter()
+        formatter.locale = Locale(identifier: "pt_BR") // Define o formato brasileiro
+        formatter.numberStyle = .currency
+        formatter.currencySymbol = "R$" // Define o símbolo da moeda
+        formatter.minimumFractionDigits = 2
+        formatter.maximumFractionDigits = 2
+        return formatter.string(from: NSNumber(value: value)) ?? "R$0,00"
+    }
+    
+
 }
 
 extension HistoricTableViewCell: ViewCodeType {

@@ -51,6 +51,13 @@
 		1E8FA2F32B27931700843555 /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FA2EE2B27931700843555 /* ContactViewController.swift */; };
 		1E8FA2F72B279A2000843555 /* CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FA2F62B279A2000843555 /* CustomNavigationBar.swift */; };
 		1E8FA2FA2B279B2300843555 /* CustomSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FA2F92B279B2300843555 /* CustomSearchBar.swift */; };
+		41114C462DA59020004F1A90 /* BaseUrlManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41114C452DA59020004F1A90 /* BaseUrlManager.swift */; };
+		41114C482DA59147004F1A90 /* UITextField + Mask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41114C472DA59147004F1A90 /* UITextField + Mask.swift */; };
+		41E0AE542DA6DC5200241267 /* CashbackListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E0AE532DA6DC5200241267 /* CashbackListResponse.swift */; };
+		41E0AE5E2DA725DA00241267 /* MySelfResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E0AE5D2DA725DA00241267 /* MySelfResponse.swift */; };
+		41E0AE602DA72BA500241267 /* CashbackStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E0AE5F2DA72BA500241267 /* CashbackStatus.swift */; };
+		41E0AE632DA72F5700241267 /* RequestCashBackViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E0AE622DA72F5700241267 /* RequestCashBackViewModel.swift */; };
+		41E0AEA22DA7377400241267 /* RequestCashbackResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E0AEA12DA7377400241267 /* RequestCashbackResponse.swift */; };
 		490785652BA06FB00007868A /* RecoverPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490785642BA06FB00007868A /* RecoverPasswordViewModel.swift */; };
 		490785682BA074630007868A /* CustomTextFieldUsualy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490785672BA074630007868A /* CustomTextFieldUsualy.swift */; };
 		4907856A2BA078F10007868A /* NewPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490785692BA078F10007868A /* NewPasswordViewModel.swift */; };
@@ -137,6 +144,13 @@
 		1E8FA2EE2B27931700843555 /* ContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
 		1E8FA2F62B279A2000843555 /* CustomNavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomNavigationBar.swift; sourceTree = "<group>"; };
 		1E8FA2F92B279B2300843555 /* CustomSearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSearchBar.swift; sourceTree = "<group>"; };
+		41114C452DA59020004F1A90 /* BaseUrlManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseUrlManager.swift; sourceTree = "<group>"; };
+		41114C472DA59147004F1A90 /* UITextField + Mask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField + Mask.swift"; sourceTree = "<group>"; };
+		41E0AE532DA6DC5200241267 /* CashbackListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashbackListResponse.swift; sourceTree = "<group>"; };
+		41E0AE5D2DA725DA00241267 /* MySelfResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySelfResponse.swift; sourceTree = "<group>"; };
+		41E0AE5F2DA72BA500241267 /* CashbackStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashbackStatus.swift; sourceTree = "<group>"; };
+		41E0AE622DA72F5700241267 /* RequestCashBackViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestCashBackViewModel.swift; sourceTree = "<group>"; };
+		41E0AEA12DA7377400241267 /* RequestCashbackResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestCashbackResponse.swift; sourceTree = "<group>"; };
 		490785642BA06FB00007868A /* RecoverPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoverPasswordViewModel.swift; sourceTree = "<group>"; };
 		490785672BA074630007868A /* CustomTextFieldUsualy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextFieldUsualy.swift; sourceTree = "<group>"; };
 		490785692BA078F10007868A /* NewPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPasswordViewModel.swift; sourceTree = "<group>"; };
@@ -211,6 +225,7 @@
 		1E8FA2252B237C1500843555 /* FreeLife */ = {
 			isa = PBXGroup;
 			children = (
+				41114C472DA59147004F1A90 /* UITextField + Mask.swift */,
 				49A2B3792B9F49A30003E034 /* Service */,
 				1E8FA2722B23864600843555 /* Login */,
 				1E8FA25F2B2381DE00843555 /* TabBar */,
@@ -395,6 +410,7 @@
 		1E8FA2962B23A7F700843555 /* RequestCashBack */ = {
 			isa = PBXGroup;
 			children = (
+				41E0AE612DA72F4A00241267 /* ViewModel */,
 				1E8FA2972B23A81900843555 /* RequestCashBackViewController.swift */,
 			);
 			path = RequestCashBack;
@@ -493,6 +509,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		41E0AE612DA72F4A00241267 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				41E0AE622DA72F5700241267 /* RequestCashBackViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		490785632BA06F8F0007868A /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -587,6 +611,7 @@
 			isa = PBXGroup;
 			children = (
 				91920E2D2D12460100711CE1 /* AuthManager.swift */,
+				41114C452DA59020004F1A90 /* BaseUrlManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -594,6 +619,7 @@
 		91920E312D1246C500711CE1 /* Requests */ = {
 			isa = PBXGroup;
 			children = (
+				41E0AE5F2DA72BA500241267 /* CashbackStatus.swift */,
 				91920E332D1246E100711CE1 /* LoginRequest.swift */,
 				91920E372D125DDA00711CE1 /* DebitsRequest.swift */,
 				91920E3E2D1359AC00711CE1 /* DebtsIdRequest.swift */,
@@ -606,6 +632,8 @@
 		91920E322D1246CE00711CE1 /* Responses */ = {
 			isa = PBXGroup;
 			children = (
+				41E0AE5D2DA725DA00241267 /* MySelfResponse.swift */,
+				41E0AE532DA6DC5200241267 /* CashbackListResponse.swift */,
 				91920E352D12474C00711CE1 /* LoginResponse.swift */,
 				91920E392D125EAD00711CE1 /* DebitsResponse.swift */,
 				91920E402D1359F700711CE1 /* DebtIdResponse.swift */,
@@ -613,6 +641,7 @@
 				919C5E9E2D14B08700655634 /* AccountsPayableResponse.swift */,
 				919C5EA32D14CB3200655634 /* CashbackResponse.swift */,
 				919C5EB02D14D99300655634 /* MessageResponse.swift */,
+				41E0AEA12DA7377400241267 /* RequestCashbackResponse.swift */,
 			);
 			path = Responses;
 			sourceTree = "<group>";
@@ -785,9 +814,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-FreeLife/Pods-FreeLife-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-FreeLife/Pods-FreeLife-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -816,6 +849,7 @@
 				1E8FA2482B23819300843555 /* Extension+UIColor.swift in Sources */,
 				1E8FA2E32B2790A100843555 /* ProfileViewController.swift in Sources */,
 				91920E442D135E5900711CE1 /* DetailsTicketModel.swift in Sources */,
+				41114C482DA59147004F1A90 /* UITextField + Mask.swift in Sources */,
 				919C5EA72D14CBB100655634 /* CashbackModel.swift in Sources */,
 				1E8FA26B2B23836300843555 /* DSImage.swift in Sources */,
 				1E8FA2E82B2790D600843555 /* ProfileModel.swift in Sources */,
@@ -827,7 +861,10 @@
 				490785652BA06FB00007868A /* RecoverPasswordViewModel.swift in Sources */,
 				1E8FA2F12B27931700843555 /* PrivacyPoliciesViewController.swift in Sources */,
 				1E8FA2FA2B279B2300843555 /* CustomSearchBar.swift in Sources */,
+				41E0AE632DA72F5700241267 /* RequestCashBackViewModel.swift in Sources */,
 				1E8FA28F2B239D5D00843555 /* TicketViewController.swift in Sources */,
+				41E0AE542DA6DC5200241267 /* CashbackListResponse.swift in Sources */,
+				41E0AE602DA72BA500241267 /* CashbackStatus.swift in Sources */,
 				49B166642BA46AC50003A7C9 /* ContentViewModel.swift in Sources */,
 				4907856A2BA078F10007868A /* NewPasswordViewModel.swift in Sources */,
 				91920E472D135F7F00711CE1 /* DetailsTicketViewModel.swift in Sources */,
@@ -837,6 +874,7 @@
 				91920E382D125DDA00711CE1 /* DebitsRequest.swift in Sources */,
 				919C5EAF2D14D91200655634 /* SendTicketRequest.swift in Sources */,
 				919C5E9F2D14B08700655634 /* AccountsPayableResponse.swift in Sources */,
+				41E0AE5E2DA725DA00241267 /* MySelfResponse.swift in Sources */,
 				1E8FA2F72B279A2000843555 /* CustomNavigationBar.swift in Sources */,
 				1E8FA2952B23A39B00843555 /* HistoricTableViewCell.swift in Sources */,
 				1E8FA2DD2B27810500843555 /* CustomDetailsButton.swift in Sources */,
@@ -860,6 +898,7 @@
 				1E8FA2F22B27931700843555 /* AboutViewController.swift in Sources */,
 				1E8FA2982B23A81900843555 /* RequestCashBackViewController.swift in Sources */,
 				91920E342D1246E100711CE1 /* LoginRequest.swift in Sources */,
+				41E0AEA22DA7377400241267 /* RequestCashbackResponse.swift in Sources */,
 				1E8FA2492B23819300843555 /* ViewCodeType.swift in Sources */,
 				1E8FA2272B237C1500843555 /* AppDelegate.swift in Sources */,
 				1E8FA2DA2B275C7E00843555 /* DetailsTicketTableViewCell.swift in Sources */,
@@ -867,6 +906,7 @@
 				1E8FA2812B23866C00843555 /* CustomTextFieldView.swift in Sources */,
 				1E8FA2292B237C1500843555 /* SceneDelegate.swift in Sources */,
 				490785682BA074630007868A /* CustomTextFieldUsualy.swift in Sources */,
+				41114C462DA59020004F1A90 /* BaseUrlManager.swift in Sources */,
 				1E8FA27A2B23864600843555 /* NewPasswordViewController.swift in Sources */,
 				91920E412D1359F700711CE1 /* DebtIdResponse.swift in Sources */,
 				91920E3A2D125EAD00711CE1 /* DebitsResponse.swift in Sources */,

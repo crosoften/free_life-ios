@@ -49,7 +49,7 @@ class ProfileViewController: UIViewController {
     lazy var profileLabel: UILabel = {
        let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Nome do usuário"
+//        label.text = "Nome do usuário"
         label.font = .dsFonts(.subTitle)
         label.textColor = .black
         return label

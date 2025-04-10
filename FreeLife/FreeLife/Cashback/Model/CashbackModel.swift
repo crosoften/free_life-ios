@@ -8,6 +8,7 @@
 import Foundation
 
 struct CashbackModel{
-    let value: Double
+    let value: String
+    let cashBackValue: Double
     let date: String
 }

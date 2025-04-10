@@ -13,7 +13,7 @@ class ContactViewModel {
     
     func postComment(name: String, email: String, message: String, completion: @escaping (Result<String, DomainError>) -> Void) {
 
-        guard let url = URL(string:"https://freelifeconect.app.br:8080/contact") else { return }
+        guard let url = URL(string:"\(BaseUrlManager.baseUrl)/contact") else { return }
         let body: Parameters = [
             "name": name,
             "email": email,

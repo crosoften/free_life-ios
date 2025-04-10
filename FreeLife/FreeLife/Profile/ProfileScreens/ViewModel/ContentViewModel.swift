@@ -24,7 +24,7 @@ class ContentViewModel {
     
     func getContent(type: ContentType, completion: @escaping (Result<Content, DomainError>) -> Void) {
         
-        guard let url = URL(string:"https://freelifeconect.app.br:8080/texts") else { return }
+        guard let url = URL(string:"\(BaseUrlManager.baseUrl)/texts") else { return }
         let body: Parameters = [
             "type": type.rawValue
         ]

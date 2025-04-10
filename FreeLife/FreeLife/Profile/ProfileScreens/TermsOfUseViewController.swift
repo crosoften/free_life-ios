@@ -23,14 +23,13 @@ class TermsOfUseViewController: UIViewController {
         navigationController?.popViewController(animated: true)
     }
 
-    lazy var termsLabel: UILabel = {
-        let label = UILabel()
+    lazy var termsLabel: UITextView = {
+        let label = UITextView()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Exemple"
         label.font = .dsFonts(.poppinsNormal12)
         label.textColor = .black
         label.textAlignment = .left
-        label.numberOfLines = 0
         return label
     }()
     

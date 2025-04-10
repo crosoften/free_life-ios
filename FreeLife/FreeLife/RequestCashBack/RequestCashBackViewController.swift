@@ -7,7 +7,30 @@
 
 import UIKit
 
+protocol RequestCashBackViewControllerDelegate: AnyObject {
+    func success()
+    func error(message: String)
+}
+
 class RequestCashBackViewController: UIViewController {
+    
+    weak var delegate: RequestCashBackViewModelDelegate?
+    
+    var companyId: Int
+    var userId: Int
+    var value: Double
+    var viewModel = RequestCashBackViewModel()
+    
+    init(companyId: Int, userId: Int, value: Double) {
+        self.companyId = companyId
+        self.userId = userId
+        self.value = value
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     lazy var containerView: UIView = {
         let view = UIView()
@@ -19,7 +42,7 @@ class RequestCashBackViewController: UIViewController {
     }()
     
     lazy var cashLabel: UILabel = {
-       let label = UILabel()
+        let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Solicitar Cashback"
         label.font = .dsFonts(.bigTitle)
@@ -29,7 +52,7 @@ class RequestCashBackViewController: UIViewController {
     }()
     
     lazy var moneyLabel: UILabel = {
-       let label = UILabel()
+        let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "R$ 00,00"
         label.font = .dsFonts(.bigTitle)
@@ -38,7 +61,7 @@ class RequestCashBackViewController: UIViewController {
     }()
     
     lazy var descriptionLabel: UILabel = {
-       let label = UILabel()
+        let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Solicite o cashback no seu pix ou abata o valor na próxima fatura"
         label.font = .dsFonts(.poppinsNormal12)
@@ -51,14 +74,15 @@ class RequestCashBackViewController: UIViewController {
     lazy var pixTextField: CustomTextFieldView = {
         let textField = CustomTextFieldView(title: "Pix")
         textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.textField.keyboardType = .decimalPad
         return textField
     }()
     
-    lazy var requestButton: CustomButton = {
+    lazy var requestPixButton: CustomButton = {
         let button = CustomButton(frame: .zero, style: .containedQuadDark)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Solicitar pix", for: .normal)
-        button.addTarget(self, action: #selector(tappedButton), for: .touchUpInside)
+        button.addTarget(self, action: #selector(requestPixButtonTapped), for: .touchUpInside)
         return button
     }()
     
@@ -66,18 +90,72 @@ class RequestCashBackViewController: UIViewController {
         let button = CustomButton(frame: .zero, style: .borderButton)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Abater na proxima fatura", for: .normal)
-       button.addTarget(self, action: #selector(tappedButton), for: .touchUpInside)
+        button.addTarget(self, action: #selector(nextInvoiceButtonTapped), for: .touchUpInside)
         return button
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tapGesture)
+        viewModel.delegate = self
+        moneyLabel.text = formatCurrency(value) // "R$ 1.234,56"
+        
+    }
+    func formatCurrency(_ value: Double) -> String {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        formatter.locale = Locale(identifier: "pt_BR") // Brasil
+        return formatter.string(from: NSNumber(value: value)) ?? "R$ 0,00"
+    }
+    @objc private func dismissKeyboard() {
+        view.endEditing(true)
     }
     
-    @objc func tappedButton(){
-        navigationController?.popViewController(animated: true)
+    @objc func requestPixButtonTapped(){
+        viewModel.requestCashback(value: getPixValue() ??  0, solicitationType: .PIX, userId: userId, companyId: companyId)
     }
+    
+    @objc func nextInvoiceButtonTapped(){
+        viewModel.requestCashback(value: getPixValue() ??  0, solicitationType: .NEXT_BILL, userId: userId, companyId: companyId)
+        
+    }
+    
+    func getPixValue() -> Double? {
+        guard let text = pixTextField.textField.text?
+            .replacingOccurrences(of: ",", with: ".")
+            .replacingOccurrences(of: "R$", with: "")
+            .trimmingCharacters(in: .whitespacesAndNewlines),
+              !text.isEmpty,
+              let value = Double(text) else {
+            showAlert(message: "Digite um valor válido")
+            return nil
+        }
+        
+        if value <= self.value{
+            return value
+        } else {
+            showAlert(message: "O valor solicitado é maior que o valor disponível.")
+            return nil
+        }
+    }
+    
+    
+    // Função para mostrar um alerta
+    func showAlert(title: String = "", message: String,  completion: (() -> Void)? = nil) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default) { action in
+            completion?()
+        }
+        alertController.addAction(okAction)
+        
+        DispatchQueue.main.async {
+            self.present(alertController, animated: true, completion: nil)
+        }
+    }
+    
+    
 }
 
 extension RequestCashBackViewController: ViewCodeType {
@@ -87,7 +165,7 @@ extension RequestCashBackViewController: ViewCodeType {
         containerView.addSubview(moneyLabel)
         containerView.addSubview(descriptionLabel)
         containerView.addSubview(pixTextField)
-        containerView.addSubview(requestButton)
+        containerView.addSubview(requestPixButton)
         containerView.addSubview(nextInvoiceButton)
     }
     
@@ -95,24 +173,22 @@ extension RequestCashBackViewController: ViewCodeType {
         containerView.anchor(
             left: view.leftAnchor,
             right: view.rightAnchor,
-            centerX: view.centerXAnchor,
             centerY: view.centerYAnchor,
             leftConstant: 35,
             rightConstant: 35,
-            heightConstant: 400
         )
         
         cashLabel.anchor(
             top: containerView.topAnchor,
             left: containerView.leftAnchor,
             right: containerView.rightAnchor,
-            topConstant: 10
+            topConstant: 30
         )
         
         moneyLabel.anchor(
             top: cashLabel.bottomAnchor,
             centerX: containerView.centerXAnchor,
-            topConstant: 10
+            topConstant: 40
         )
         
         descriptionLabel.anchor(
@@ -126,32 +202,50 @@ extension RequestCashBackViewController: ViewCodeType {
             left: containerView.leftAnchor,
             right: containerView.rightAnchor,
             topConstant: 18,
-            leftConstant: 10,
-            rightConstant: 10,
+            leftConstant: 20,
+            rightConstant: 20,
             heightConstant: 70
         )
         
-        requestButton.anchor(
+        requestPixButton.anchor(
+            top: pixTextField.bottomAnchor,
             left: nextInvoiceButton.leftAnchor,
-            bottom: nextInvoiceButton.topAnchor,
             right: nextInvoiceButton.rightAnchor,
-            bottomConstant: 10,
+            topConstant: 40,
             heightConstant: 50
         )
         
         nextInvoiceButton.anchor(
+            top: requestPixButton.bottomAnchor,
             left: containerView.leftAnchor,
             bottom: containerView.bottomAnchor,
             right: containerView.rightAnchor,
-            leftConstant: 10,
-            bottomConstant: 10,
-            rightConstant: 10,
+            topConstant: 20,
+            leftConstant: 20,
+            bottomConstant: 50,
+            rightConstant: 20,
             heightConstant: 50
         )
     }
     
     func setupAdditionalConfiguration() {
-        view.backgroundColor = .clear
+        view.backgroundColor = .black.withAlphaComponent(0.3)
         view.isOpaque = true
+    }
+}
+
+extension RequestCashBackViewController: RequestCashBackViewModelDelegate {
+    func success() {
+        
+        showAlert(message: "Solicitado com sucesso!") { [weak self] in
+            guard let self else {return}
+            self.dismiss(animated: true)
+            delegate?.success()
+        }
+        
+    }
+    
+    func error(message: String) {
+        showAlert(message: message)
     }
 }

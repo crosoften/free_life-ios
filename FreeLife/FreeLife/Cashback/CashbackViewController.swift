@@ -46,6 +46,7 @@ class CashbackViewController: UIViewController {
         table.register(HistoricTableViewCell.self, forCellReuseIdentifier: HistoricTableViewCell.identifier)
         table.delegate = self
         table.dataSource = self
+        table.allowsSelection = false
         return table
     }()
     
@@ -58,16 +59,41 @@ class CashbackViewController: UIViewController {
     }()
     
     @objc func tappedSendButton() {
-//        let navigationController = UINavigationController(rootViewController: RequestCashBackViewController())
-//        present(navigationController, animated: true, completion: nil)
-//        self.navigationController?.modalPresentationStyle = .pageSheet
+        
+        guard let companyId = viewModel.companyId else {
+            return
+        }
+        
+        guard let userId = viewModel.userId else {
+            return
+        }
+        
+        let cashBackVC = RequestCashBackViewController(companyId: companyId, userId: userId, value: viewModel.value )
+        cashBackVC.delegate = self
+
+        let navigationController = UINavigationController(rootViewController: cashBackVC)
+        navigationController.modalPresentationStyle = .pageSheet
+
+        if let sheet = navigationController.sheetPresentationController {
+            sheet.detents = [.large()] // Ocupa a tela inteira
+            sheet.prefersGrabberVisible = true // Mostra a barrinha de arrastar
+            sheet.prefersScrollingExpandsWhenScrolledToEdge = false
+            sheet.preferredCornerRadius = 20
+        }
+
+        present(navigationController, animated: true, completion: nil)
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
-        viewModel.getCashback()
         viewModel.delegate = self
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel.getCashback()
+        viewModel.getMyself()
+
     }
 }
 
@@ -150,8 +176,7 @@ extension CashbackViewController: CashbackViewModelDelegate{
     func success(value: Double) {
         DispatchQueue.main.async {
             self.historicTableView.reloadData()
-            let totalValue = self.viewModel.calculateTotalValue()
-            let formattedValue = self.viewModel.formatCurrency(value: totalValue)
+            let formattedValue = self.viewModel.formatCurrency(value: value)
                     self.invoiceCard.moneyLabel.text = formattedValue      }
     }
     
@@ -164,5 +189,32 @@ extension CashbackViewController: CashbackViewModelDelegate{
         }
     }
     
+    
+}
+
+
+extension CashbackViewController: RequestCashBackViewModelDelegate {
+    func success() {
+        DispatchQueue.main.async { [weak self] in
+            guard let self else {return}
+            self.viewModel.getCashback()
+        }
+    }
+    
+    
+    // Função para mostrar um alerta
+    func showAlert(title: String = "", message: String,  completion: (() -> Void)? = nil) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default) { action in
+            completion?()
+        }
+        alertController.addAction(okAction)
+        
+        DispatchQueue.main.async {
+            self.present(alertController, animated: true, completion: nil)
+        }
+    }
+    
+
     
 }

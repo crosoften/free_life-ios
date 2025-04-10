@@ -32,7 +32,7 @@ class TicketViewModel{
             switch result {
             case .success(let success):
                 ticket.removeAll()
-                let ticketResponse = success.result.registros
+                let ticketResponse = success.data.registros
                 for i in ticketResponse{
                     let tickets = TicketModel(
                         date: i.dataVencimento,
@@ -44,7 +44,7 @@ class TicketViewModel{
                         )
                     ticket.append(tickets)
                 }
-                delegate?.success(value:  success.result.registros.first?.valor ?? "")
+                delegate?.success(value:  success.data.registros.first?.valor ?? "")
                 print(success)
             case .failure(let error):
                 if let error = error as? APIMessageError{

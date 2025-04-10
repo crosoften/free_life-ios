@@ -8,7 +8,7 @@
 import Foundation
 
 struct AccountsPayableResponse: Codable {
-    let result: ResultData
+    let data: ResultData
     
     struct ResultData: Codable {
         let page: String

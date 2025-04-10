@@ -23,7 +23,7 @@ class HomeViewController: UIViewController {
     lazy var userNameLabel: UILabel = {
        let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Lucas Cesar"
+//        label.text = "Lucas Cesar"
         label.font = .dsFonts(.subTitle)
         label.textColor = .black
         return label
@@ -48,8 +48,12 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
-        viewModel.getTicket()
         viewModel.delegate = self
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel.getTicket()
     }
 }
 

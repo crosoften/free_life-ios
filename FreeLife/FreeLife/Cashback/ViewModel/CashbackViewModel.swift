@@ -19,7 +19,10 @@ class CashbackViewModel{
     weak var delegate: CashbackViewModelDelegate?
     let apiService: APIService
     var cashback: [CashbackModel] = []
-   
+    var companyId: Int? = nil
+    var userId: Int? = nil
+    
+    var value: Double = 0
     
     //MARK: Initializers
     init(apiService: APIService = APIService()) {
@@ -27,17 +30,19 @@ class CashbackViewModel{
     }
     
     func getCashback(){
-        apiService.getCashback() { [weak self] result in
+        
+        apiService.getCashbackListAndValue { [weak self] result in
             guard let self = self else {return}
             switch result {
             case .success(let success):
                 cashback.removeAll()
-                for i in success{
+                for i in success.separatedCashbacks{
                     let cashbacks = CashbackModel(
-                        value: i.value,
-                        date: i.date)
+                        value: i.payment, cashBackValue: i.cashbackValue,
+                        date: i.paymentDate)
                     cashback.append(cashbacks)
-                    delegate?.success(value: i.value)
+                    self.value = success.totalValue
+                    delegate?.success(value: success.totalValue)
                 }
                 
                 print(success)
@@ -75,6 +80,20 @@ class CashbackViewModel{
         formatter.maximumFractionDigits = 2
         return formatter.string(from: NSNumber(value: value)) ?? "R$0,00"
     }
+    
+    
+    func getMyself() {
+        apiService.getMyself { [weak self ] result in
+            switch result {
+            case .success(let success):
+                self?.companyId = success.companyId
+                self?.userId = success.id
+            case .failure(let failure):
+                print(failure)
+            }
+        }
+    }
+    
     
 }
 

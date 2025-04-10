@@ -34,7 +34,8 @@ class LoginViewController: UIViewController {
         let textField = CustomTextFieldView(title: "CPF", placeholderLabel: "000.000.000-00", imageset: .ds(.profileBlue))
         textField.textField.autocapitalizationType = .none
         textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.textField.text = "111.222.333-96"
+        textField.textField.text = "011.420.845-07"
+        textField.textField.applyMask(mask: "###.###.###-##")
         return textField
     }()
     

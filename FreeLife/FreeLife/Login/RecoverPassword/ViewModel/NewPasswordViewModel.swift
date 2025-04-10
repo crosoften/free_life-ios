@@ -18,7 +18,7 @@ class NewPasswordViewModel {
     }
     
     func postResetPassword(password: String, passwordConfirmation: String, code: String, completion: @escaping (Result<String, DomainError>) -> Void) {
-        guard let url = URL(string: "https://freelifeconect.app.br:8080/auth/reset-password") else {return}
+        guard let url = URL(string: "\(BaseUrlManager.baseUrl)/auth/reset-password") else {return}
         print("email: \(email)")
         let body: Parameters = [
             "credential": email,
