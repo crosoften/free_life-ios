@@ -8,6 +8,6 @@
 import Foundation
 class BaseUrlManager {
     
-    static let baseUrl: String = "https://4f75-167-250-185-189.ngrok-free.app"
-//    static var baseUrl: String = "https://freelifeconect.app.br:8080"
+//    static let baseUrl: String = "https://4f75-167-250-185-189.ngrok-free.app"
+    static var baseUrl: String = "https://freelifeconect.app.br:8080"
 }
