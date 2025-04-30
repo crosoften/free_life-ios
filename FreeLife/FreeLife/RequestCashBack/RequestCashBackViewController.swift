@@ -71,13 +71,13 @@ class RequestCashBackViewController: UIViewController {
         return label
     }()
     
-    lazy var pixTextField: CustomTextFieldView = {
-        let textField = CustomTextFieldView(title: "Pix")
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.textField.keyboardType = .decimalPad
-        return textField
-    }()
-    
+//    lazy var pixTextField: CustomTextFieldView = {
+//        let textField = CustomTextFieldView(title: "Pix")
+//        textField.translatesAutoresizingMaskIntoConstraints = false
+//        textField.textField.keyboardType = .decimalPad
+//        return textField
+//    }()
+//    
     lazy var requestPixButton: CustomButton = {
         let button = CustomButton(frame: .zero, style: .containedQuadDark)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -114,32 +114,32 @@ class RequestCashBackViewController: UIViewController {
     }
     
     @objc func requestPixButtonTapped(){
-        viewModel.requestCashback(value: getPixValue() ??  0, solicitationType: .PIX, userId: userId, companyId: companyId)
+        viewModel.requestCashback(value: value, solicitationType: .PIX, userId: userId, companyId: companyId)
     }
     
     @objc func nextInvoiceButtonTapped(){
-        viewModel.requestCashback(value: getPixValue() ??  0, solicitationType: .NEXT_BILL, userId: userId, companyId: companyId)
+        viewModel.requestCashback(value: value, solicitationType: .NEXT_BILL, userId: userId, companyId: companyId)
         
     }
     
-    func getPixValue() -> Double? {
-        guard let text = pixTextField.textField.text?
-            .replacingOccurrences(of: ",", with: ".")
-            .replacingOccurrences(of: "R$", with: "")
-            .trimmingCharacters(in: .whitespacesAndNewlines),
-              !text.isEmpty,
-              let value = Double(text) else {
-            showAlert(message: "Digite um valor válido")
-            return nil
-        }
-        
-        if value <= self.value{
-            return value
-        } else {
-            showAlert(message: "O valor solicitado é maior que o valor disponível.")
-            return nil
-        }
-    }
+//    func getPixValue() -> Double? {
+//        guard let text = pixTextField.textField.text?
+//            .replacingOccurrences(of: ",", with: ".")
+//            .replacingOccurrences(of: "R$", with: "")
+//            .trimmingCharacters(in: .whitespacesAndNewlines),
+//              !text.isEmpty,
+//              let value = Double(text) else {
+//            showAlert(message: "Digite um valor válido")
+//            return nil
+//        }
+//        
+//        if value <= self.value{
+//            return value
+//        } else {
+//            showAlert(message: "O valor solicitado é maior que o valor disponível.")
+//            return nil
+//        }
+//    }
     
     
     // Função para mostrar um alerta
@@ -164,7 +164,7 @@ extension RequestCashBackViewController: ViewCodeType {
         containerView.addSubview(cashLabel)
         containerView.addSubview(moneyLabel)
         containerView.addSubview(descriptionLabel)
-        containerView.addSubview(pixTextField)
+//        containerView.addSubview(pixTextField)
         containerView.addSubview(requestPixButton)
         containerView.addSubview(nextInvoiceButton)
     }
@@ -197,18 +197,18 @@ extension RequestCashBackViewController: ViewCodeType {
             right: containerView.rightAnchor
         )
         
-        pixTextField.anchor(
-            top: descriptionLabel.bottomAnchor,
-            left: containerView.leftAnchor,
-            right: containerView.rightAnchor,
-            topConstant: 18,
-            leftConstant: 20,
-            rightConstant: 20,
-            heightConstant: 70
-        )
+//        pixTextField.anchor(
+//            top: descriptionLabel.bottomAnchor,
+//            left: containerView.leftAnchor,
+//            right: containerView.rightAnchor,
+//            topConstant: 18,
+//            leftConstant: 20,
+//            rightConstant: 20,
+//            heightConstant: 70
+//        )
         
         requestPixButton.anchor(
-            top: pixTextField.bottomAnchor,
+            top: descriptionLabel.bottomAnchor,
             left: nextInvoiceButton.leftAnchor,
             right: nextInvoiceButton.rightAnchor,
             topConstant: 40,

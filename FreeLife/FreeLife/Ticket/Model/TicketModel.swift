@@ -14,4 +14,5 @@ struct TicketModel{
     let originalValue: String
     let typePayment: String
     let code: String
+    let link: String
 }

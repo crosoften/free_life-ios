@@ -25,26 +25,26 @@ class HomeViewModel{
     init(apiService: APIService = APIService()) {
         self.apiService = apiService
     }
-    
     func getTicket(){
-        apiService.getDebitsIxcsoft() { [weak self] result in
+        apiService.getDebitsNew { [weak self] result in
             guard let self = self else {return}
             switch result {
             case .success(let success):
                 ticket.removeAll()
-                let ticketResponse = success.data.registros
+                guard let ticketResponse = success.registros else {return}
                 for i in ticketResponse{
                     let tickets = TicketModel(
                         date: i.dataVencimento,
                         createDate: i.dataEmissao,
                         value: i.valor,
                         originalValue: i.valor,
-                        typePayment: i.tipoPagamento,
-                        code: i.codigoBarras
+                        typePayment: i.tipoRecebimento,
+                        code: i.linhaDigitavel,
+                        link: i.gatewayLink
                         )
                     ticket.append(tickets)
                 }
-                delegate?.success(value:  success.data.registros.first?.valor ?? "")
+                delegate?.success(value:  "")
                 print(success)
             case .failure(let error):
                 if let error = error as? APIMessageError{
@@ -56,6 +56,37 @@ class HomeViewModel{
             }
         }
     }
+
+//    func getTicket(){
+//        apiService.getDebitsIxcsoft() { [weak self] result in
+//            guard let self = self else {return}
+//            switch result {
+//            case .success(let success):
+//                ticket.removeAll()
+//                let ticketResponse = success.data.registros
+//                for i in ticketResponse{
+//                    let tickets = TicketModel(
+//                        date: i.dataVencimento,
+//                        createDate: i.dataEmissao,
+//                        value: i.valor,
+//                        originalValue: i.valor,
+//                        typePayment: i.tipoPagamento,
+//                        code: i.codigoBarras, link: ""
+//                        )
+//                    ticket.append(tickets)
+//                }
+//                delegate?.success(value:  success.data.registros.first?.valor ?? "")
+//                print(success)
+//            case .failure(let error):
+//                if let error = error as? APIMessageError{
+//                    delegate?.error(message: error.error)
+//                    print(error)
+//                }else{
+//                    print(error)
+//                }
+//            }
+//        }
+//    }
     
     var numberOfTickets: Int{
         return ticket.count

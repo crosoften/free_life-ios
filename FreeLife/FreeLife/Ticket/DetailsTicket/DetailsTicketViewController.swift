@@ -206,7 +206,38 @@ class DetailsTicketViewController: UIViewController {
         viewModel.postTicket(modelRequest: request)
     }
 
+    lazy var buttonDownload: CustomDetailsButton = {
+        let button = CustomDetailsButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.imageButton.image = .ds(.ticket)
+        button.cardLabel.text = "Fazer download do boleto"
+        button.buttonCard.addTarget(self, action: #selector(buttonDownloadTapped), for: .touchUpInside)
+        return button
+    }()
     
+    @objc func buttonDownloadTapped() {
+        if let url = URL(string: ticket.link) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        } else {
+            showAlert(message: "Boleto indisponível")
+        }
+    }
+
+    // Função para mostrar um alerta
+    func showAlert(title: String = "", message: String,  completion: (() -> Void)? = nil) {
+        DispatchQueue.main.async {
+            
+            let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: .default) { action in
+                completion?()
+            }
+            alertController.addAction(okAction)
+            
+            self.present(alertController, animated: true, completion: nil)
+        }
+    }
+    
+
     //    lazy var buttonSms: CustomDetailsButton = {
     //        let button = CustomDetailsButton()
     //        button.translatesAutoresizingMaskIntoConstraints = false
@@ -260,6 +291,7 @@ extension DetailsTicketViewController: ViewCodeType {
 //        view.addSubview(cashBackValueLabel)
 //        view.addSubview(buttonPix)
         view.addSubview(buttonEmail)
+        view.addSubview(buttonDownload)
 //        view.addSubview(buttonSms)
 //        view.addSubview(packageLabel)
     }
@@ -374,8 +406,18 @@ extension DetailsTicketViewController: ViewCodeType {
 //        
         buttonEmail.anchor(
             top: demandLabel.bottomAnchor,
-            centerX: view.centerXAnchor,
+            left: view.centerXAnchor,
             topConstant: 20,
+            leftConstant: 20,
+            widthConstant: 90,
+            heightConstant: 110
+        )
+        
+        buttonDownload.anchor(
+            top: demandLabel.bottomAnchor,
+            right: view.centerXAnchor,
+            topConstant: 20,
+            rightConstant: 20,
             widthConstant: 90,
             heightConstant: 110
         )

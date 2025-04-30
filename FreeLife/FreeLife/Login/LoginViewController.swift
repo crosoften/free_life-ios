@@ -35,6 +35,8 @@ class LoginViewController: UIViewController {
         textField.textField.autocapitalizationType = .none
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.textField.text = "011.420.845-07"
+        textField.textField.text = "347.977.998-03"
+        textField.textField.text = "422.598.368-44"
         textField.textField.applyMask(mask: "###.###.###-##")
         return textField
     }()

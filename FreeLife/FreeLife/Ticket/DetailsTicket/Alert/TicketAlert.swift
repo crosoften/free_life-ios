@@ -46,6 +46,7 @@ class TicketAlert: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .systemFont(ofSize: 16)
         label.text = "Digite o e-mail que você quer receber o boleto:"
+        label.numberOfLines = 0
         label.textColor = .gray
         return label
     }()
@@ -97,6 +98,7 @@ class TicketAlert: UIViewController {
             
             serviceLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 20),
             serviceLabel.leadingAnchor.constraint(equalTo: alertView.leadingAnchor, constant: 20),
+            serviceLabel.trailingAnchor.constraint(equalTo: alertView.trailingAnchor, constant: -20),
             
             serviceTextfield.topAnchor.constraint(equalTo: serviceLabel.bottomAnchor, constant: 10),
             serviceTextfield.leadingAnchor.constraint(equalTo: alertView.leadingAnchor, constant: 20),

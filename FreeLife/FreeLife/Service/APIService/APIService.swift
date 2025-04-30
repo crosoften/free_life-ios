@@ -407,6 +407,13 @@ class APIService {
         request(method: .get, endpoint: endpoint,tokenRequired: true, completion: completion)
     }
     
+    
+    func getDebitsNew( completion: @escaping(Result<FinanceRecordResponse,Error>) -> Void){
+        let endpoint = "/pega-debitos"
+        
+        request(method: .get, endpoint: endpoint,tokenRequired: true, completion: completion)
+    }
+    
     func getCashback( completion: @escaping(Result<[CashBackData],Error>) -> Void){
         let endpoint = "/cashbacks"
         

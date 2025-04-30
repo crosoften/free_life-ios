@@ -53,6 +53,7 @@
 		1E8FA2FA2B279B2300843555 /* CustomSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FA2F92B279B2300843555 /* CustomSearchBar.swift */; };
 		41114C462DA59020004F1A90 /* BaseUrlManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41114C452DA59020004F1A90 /* BaseUrlManager.swift */; };
 		41114C482DA59147004F1A90 /* UITextField + Mask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41114C472DA59147004F1A90 /* UITextField + Mask.swift */; };
+		41B591322DC28D4C005ACC7D /* FinanceRecordResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B591312DC28D4C005ACC7D /* FinanceRecordResponse.swift */; };
 		41E0AE542DA6DC5200241267 /* CashbackListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E0AE532DA6DC5200241267 /* CashbackListResponse.swift */; };
 		41E0AE5E2DA725DA00241267 /* MySelfResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E0AE5D2DA725DA00241267 /* MySelfResponse.swift */; };
 		41E0AE602DA72BA500241267 /* CashbackStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E0AE5F2DA72BA500241267 /* CashbackStatus.swift */; };
@@ -146,6 +147,7 @@
 		1E8FA2F92B279B2300843555 /* CustomSearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSearchBar.swift; sourceTree = "<group>"; };
 		41114C452DA59020004F1A90 /* BaseUrlManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseUrlManager.swift; sourceTree = "<group>"; };
 		41114C472DA59147004F1A90 /* UITextField + Mask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField + Mask.swift"; sourceTree = "<group>"; };
+		41B591312DC28D4C005ACC7D /* FinanceRecordResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinanceRecordResponse.swift; sourceTree = "<group>"; };
 		41E0AE532DA6DC5200241267 /* CashbackListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashbackListResponse.swift; sourceTree = "<group>"; };
 		41E0AE5D2DA725DA00241267 /* MySelfResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySelfResponse.swift; sourceTree = "<group>"; };
 		41E0AE5F2DA72BA500241267 /* CashbackStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashbackStatus.swift; sourceTree = "<group>"; };
@@ -619,6 +621,7 @@
 		91920E312D1246C500711CE1 /* Requests */ = {
 			isa = PBXGroup;
 			children = (
+				41B591312DC28D4C005ACC7D /* FinanceRecordResponse.swift */,
 				41E0AE5F2DA72BA500241267 /* CashbackStatus.swift */,
 				91920E332D1246E100711CE1 /* LoginRequest.swift */,
 				91920E372D125DDA00711CE1 /* DebitsRequest.swift */,
@@ -854,6 +857,7 @@
 				1E8FA26B2B23836300843555 /* DSImage.swift in Sources */,
 				1E8FA2E82B2790D600843555 /* ProfileModel.swift in Sources */,
 				1E8FA28C2B2399E400843555 /* HomeViewController.swift in Sources */,
+				41B591322DC28D4C005ACC7D /* FinanceRecordResponse.swift in Sources */,
 				919C5EA22D14C7B500655634 /* HomeViewModel.swift in Sources */,
 				1E8FA25B2B2381BE00843555 /* DSColors.swift in Sources */,
 				49B166602BA466ED0003A7C9 /* HelpCenterViewModel.swift in Sources */,
@@ -1053,6 +1057,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = SP59LRFJ97;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FreeLife/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1084,6 +1089,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = SP59LRFJ97;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FreeLife/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
