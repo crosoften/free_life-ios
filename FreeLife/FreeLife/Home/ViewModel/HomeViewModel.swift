@@ -33,19 +33,20 @@ class HomeViewModel{
                 ticket.removeAll()
                 guard let ticketResponse = success.registros else {return}
                 for i in ticketResponse{
-                    let tickets = TicketModel(
-                        date: i.dataVencimento,
-                        createDate: i.dataEmissao,
-                        value: i.valor,
-                        originalValue: i.valor,
-                        typePayment: i.tipoRecebimento,
-                        code: i.linhaDigitavel,
-                        link: i.gatewayLink
+                    if i.pagamentoData.isEmpty{
+                        let tickets = TicketModel(
+                            date: i.dataVencimento,
+                            createDate: i.dataEmissao,
+                            value: i.valor,
+                            originalValue: i.valor,
+                            typePayment: i.tipoRecebimento,
+                            code: i.linhaDigitavel,
+                            link: i.gatewayLink
                         )
-                    ticket.append(tickets)
+                        ticket.append(tickets)
+                    }
                 }
                 delegate?.success(value:  "")
-                print(success)
             case .failure(let error):
                 if let error = error as? APIMessageError{
                     delegate?.error(message: error.error)

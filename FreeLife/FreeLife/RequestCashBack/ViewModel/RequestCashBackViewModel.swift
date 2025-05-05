@@ -24,7 +24,7 @@ class RequestCashBackViewModel{
         self.apiService = apiService
     }
     
-    func requestCashback(value: Double, status: CashbackStatus = .solicitado, solicitationType: SolicitationType, userId: Int, companyId: Int ){
+    func requestCashback(pixKey: String?, value: Double, status: CashbackStatus = .solicitado, solicitationType: SolicitationType, userId: Int, companyId: Int ){
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
         let todayString = formatter.string(from: Date())
@@ -36,7 +36,8 @@ class RequestCashBackViewModel{
             status: status.rawValue,
             solicitation: solicitationType.rawValue,
             userId: userId,
-            companyId: companyId
+            companyId: companyId,
+            pixKey: pixKey
         )
         
         

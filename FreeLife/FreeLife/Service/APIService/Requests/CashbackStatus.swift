@@ -28,4 +28,5 @@ struct RequestCashBack: Codable {
     let solicitation: SolicitationType.RawValue
     let userId: Int
     let companyId: Int
+    let pixKey: String?
 }

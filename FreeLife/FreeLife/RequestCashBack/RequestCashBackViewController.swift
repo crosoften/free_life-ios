@@ -63,7 +63,7 @@ class RequestCashBackViewController: UIViewController {
     lazy var descriptionLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Solicite o cashback no seu pix ou abata o valor na próxima fatura"
+        label.text = "Solicite o cashback no seu pix ou abata o valor na próxima fatura. \n\nImportante: A chave pix deve ser do titular! Não será enviado pix em nome de terceiros!"
         label.font = .dsFonts(.poppinsNormal12)
         label.textColor = .black
         label.textAlignment = .center
@@ -71,12 +71,11 @@ class RequestCashBackViewController: UIViewController {
         return label
     }()
     
-//    lazy var pixTextField: CustomTextFieldView = {
-//        let textField = CustomTextFieldView(title: "Pix")
-//        textField.translatesAutoresizingMaskIntoConstraints = false
-//        textField.textField.keyboardType = .decimalPad
-//        return textField
-//    }()
+    lazy var pixTextField: CustomTextFieldView = {
+        let textField = CustomTextFieldView(title: "Chave Pix(caso opte por PIX)")
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        return textField
+    }()
 //    
     lazy var requestPixButton: CustomButton = {
         let button = CustomButton(frame: .zero, style: .containedQuadDark)
@@ -114,11 +113,17 @@ class RequestCashBackViewController: UIViewController {
     }
     
     @objc func requestPixButtonTapped(){
-        viewModel.requestCashback(value: value, solicitationType: .PIX, userId: userId, companyId: companyId)
+        guard let pixKey = pixTextField.textField.text,
+              !pixKey.isEmpty else {
+            showAlert(message: "Para solicitar o PIX, digite sua chave!")
+            return
+        }
+        
+        viewModel.requestCashback(pixKey: pixKey, value: value, solicitationType: .PIX, userId: userId, companyId: companyId)
     }
     
     @objc func nextInvoiceButtonTapped(){
-        viewModel.requestCashback(value: value, solicitationType: .NEXT_BILL, userId: userId, companyId: companyId)
+        viewModel.requestCashback(pixKey: nil, value: value, solicitationType: .NEXT_BILL, userId: userId, companyId: companyId)
         
     }
     
@@ -164,7 +169,7 @@ extension RequestCashBackViewController: ViewCodeType {
         containerView.addSubview(cashLabel)
         containerView.addSubview(moneyLabel)
         containerView.addSubview(descriptionLabel)
-//        containerView.addSubview(pixTextField)
+        containerView.addSubview(pixTextField)
         containerView.addSubview(requestPixButton)
         containerView.addSubview(nextInvoiceButton)
     }
@@ -197,18 +202,18 @@ extension RequestCashBackViewController: ViewCodeType {
             right: containerView.rightAnchor
         )
         
-//        pixTextField.anchor(
-//            top: descriptionLabel.bottomAnchor,
-//            left: containerView.leftAnchor,
-//            right: containerView.rightAnchor,
-//            topConstant: 18,
-//            leftConstant: 20,
-//            rightConstant: 20,
-//            heightConstant: 70
-//        )
+        pixTextField.anchor(
+            top: descriptionLabel.bottomAnchor,
+            left: containerView.leftAnchor,
+            right: containerView.rightAnchor,
+            topConstant: 18,
+            leftConstant: 20,
+            rightConstant: 20,
+            heightConstant: 70
+        )
         
         requestPixButton.anchor(
-            top: descriptionLabel.bottomAnchor,
+            top: pixTextField.bottomAnchor,
             left: nextInvoiceButton.leftAnchor,
             right: nextInvoiceButton.rightAnchor,
             topConstant: 40,

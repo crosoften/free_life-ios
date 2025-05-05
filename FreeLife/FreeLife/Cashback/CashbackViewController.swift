@@ -67,21 +67,24 @@ class CashbackViewController: UIViewController {
         guard let userId = viewModel.userId else {
             return
         }
-        
-        let cashBackVC = RequestCashBackViewController(companyId: companyId, userId: userId, value: viewModel.value )
-        cashBackVC.delegate = self
-
-        let navigationController = UINavigationController(rootViewController: cashBackVC)
-        navigationController.modalPresentationStyle = .pageSheet
-
-        if let sheet = navigationController.sheetPresentationController {
-            sheet.detents = [.large()] // Ocupa a tela inteira
-            sheet.prefersGrabberVisible = true // Mostra a barrinha de arrastar
-            sheet.prefersScrollingExpandsWhenScrolledToEdge = false
-            sheet.preferredCornerRadius = 20
+        if viewModel.value > 0 {
+            
+            let cashBackVC = RequestCashBackViewController(companyId: companyId, userId: userId, value: viewModel.value )
+            cashBackVC.delegate = self
+            let navigationController = UINavigationController(rootViewController: cashBackVC)
+            navigationController.modalPresentationStyle = .pageSheet
+            
+            if let sheet = navigationController.sheetPresentationController {
+                sheet.detents = [.large()] // Ocupa a tela inteira
+                sheet.prefersGrabberVisible = true // Mostra a barrinha de arrastar
+                sheet.prefersScrollingExpandsWhenScrolledToEdge = false
+                sheet.preferredCornerRadius = 20
+            }
+            
+            present(navigationController, animated: true, completion: nil)
+        } else {
+            showAlert(message: "Você não tem saldo para solicitar")
         }
-
-        present(navigationController, animated: true, completion: nil)
     }
 
     override func viewDidLoad() {

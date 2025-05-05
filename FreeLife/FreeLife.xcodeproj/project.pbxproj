@@ -59,6 +59,7 @@
 		41E0AE602DA72BA500241267 /* CashbackStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E0AE5F2DA72BA500241267 /* CashbackStatus.swift */; };
 		41E0AE632DA72F5700241267 /* RequestCashBackViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E0AE622DA72F5700241267 /* RequestCashBackViewModel.swift */; };
 		41E0AEA22DA7377400241267 /* RequestCashbackResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E0AEA12DA7377400241267 /* RequestCashbackResponse.swift */; };
+		41E68DDB2DC93F96001AD336 /* String + Date Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E68DDA2DC93F96001AD336 /* String + Date Formatter.swift */; };
 		490785652BA06FB00007868A /* RecoverPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490785642BA06FB00007868A /* RecoverPasswordViewModel.swift */; };
 		490785682BA074630007868A /* CustomTextFieldUsualy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490785672BA074630007868A /* CustomTextFieldUsualy.swift */; };
 		4907856A2BA078F10007868A /* NewPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490785692BA078F10007868A /* NewPasswordViewModel.swift */; };
@@ -153,6 +154,7 @@
 		41E0AE5F2DA72BA500241267 /* CashbackStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashbackStatus.swift; sourceTree = "<group>"; };
 		41E0AE622DA72F5700241267 /* RequestCashBackViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestCashBackViewModel.swift; sourceTree = "<group>"; };
 		41E0AEA12DA7377400241267 /* RequestCashbackResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestCashbackResponse.swift; sourceTree = "<group>"; };
+		41E68DDA2DC93F96001AD336 /* String + Date Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + Date Formatter.swift"; sourceTree = "<group>"; };
 		490785642BA06FB00007868A /* RecoverPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoverPasswordViewModel.swift; sourceTree = "<group>"; };
 		490785672BA074630007868A /* CustomTextFieldUsualy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextFieldUsualy.swift; sourceTree = "<group>"; };
 		490785692BA078F10007868A /* NewPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPasswordViewModel.swift; sourceTree = "<group>"; };
@@ -227,6 +229,7 @@
 		1E8FA2252B237C1500843555 /* FreeLife */ = {
 			isa = PBXGroup;
 			children = (
+				41E68DDA2DC93F96001AD336 /* String + Date Formatter.swift */,
 				41114C472DA59147004F1A90 /* UITextField + Mask.swift */,
 				49A2B3792B9F49A30003E034 /* Service */,
 				1E8FA2722B23864600843555 /* Login */,
@@ -917,6 +920,7 @@
 				49DE52AE2B9B82B5006AE59D /* CustomButtonView.swift in Sources */,
 				1E8FA26F2B23836300843555 /* DSFonts.swift in Sources */,
 				1E8FA2922B23A07400843555 /* CashbackViewController.swift in Sources */,
+				41E68DDB2DC93F96001AD336 /* String + Date Formatter.swift in Sources */,
 				49B166622BA467270003A7C9 /* Root.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

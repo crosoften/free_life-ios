@@ -210,7 +210,7 @@ class DetailsTicketViewController: UIViewController {
         let button = CustomDetailsButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.imageButton.image = .ds(.ticket)
-        button.cardLabel.text = "Fazer download do boleto"
+        button.cardLabel.text = "Visualizar boleto"
         button.buttonCard.addTarget(self, action: #selector(buttonDownloadTapped), for: .touchUpInside)
         return button
     }()

@@ -47,7 +47,7 @@ class DetailsTicketTableViewCell: UITableViewCell {
     
     func setupCell(ticket: TicketModel){
         
-        dayLabel.text = "Vencimento:\(ticket.date)"
+        dayLabel.text = "Vencimento: \(ticket.date.toBRDateFormat())"
         priceLabel.text = "R$\(ticket.value)"
         
     }

@@ -78,11 +78,11 @@ class APIService {
                 completion(.failure(APIError.requestFailed))
                 return
             }
-            if let data = data, let responseString = String(data: data, encoding: .utf8) {
-                print("Response String: \(responseString)") // Exibe a resposta como string
-            } else {
-                print("No data or unable to convert data to string.")
-            }
+//            if let data = data, let responseString = String(data: data, encoding: .utf8) {
+//                print("Response String: \(responseString)") // Exibe a resposta como string
+//            } else {
+//                print("No data or unable to convert data to string.")
+//            }
             
             guard let data = data else {
                 completion(.failure(APIError.invalidData))
@@ -331,15 +331,19 @@ class APIService {
     func requestCashBack(modelRequest: RequestCashBack, completion: @escaping(Result<RequestCashbackResponse,Error>) -> Void) {
         let endpoint = "/cashbacks"
         
-        let parameters: [String: Any] = [
+        var parameters: [String: Any] = [
             "date" : modelRequest.date,
             "value" : modelRequest.value,
             "redeemed" : modelRequest.redeemed,
             "status" : modelRequest.status,
             "solicitation" : modelRequest.solicitation,
             "userId" : modelRequest.userId,
-            "companyId" : modelRequest.companyId,
+            "companyId" : modelRequest.companyId
         ]
+
+        if let pixKey = modelRequest.pixKey {
+            parameters["pixKey"] = pixKey
+        }
         
         request(method: .post, endpoint: endpoint, parameters: parameters, tokenRequired: true, completion: completion)
     }
