@@ -34,9 +34,9 @@ class LoginViewController: UIViewController {
         let textField = CustomTextFieldView(title: "CPF", placeholderLabel: "000.000.000-00", imageset: .ds(.profileBlue))
         textField.textField.autocapitalizationType = .none
         textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.textField.text = "011.420.845-07"
-        textField.textField.text = "347.977.998-03"
-        textField.textField.text = "422.598.368-44"
+//        textField.textField.text = "011.420.845-07"
+//        textField.textField.text = "347.977.998-03"
+//        textField.textField.text = "422.598.368-44"
         textField.textField.applyMask(mask: "###.###.###-##")
         return textField
     }()
@@ -118,15 +118,23 @@ class LoginViewController: UIViewController {
     }
     
     private func startAnimation() {
-        loadingIndicator.startAnimating()
-        loadingIndicator.isHidden = false
-        loginButton.isEnabled = false
+        DispatchQueue.main.async { [weak self] in
+            guard let self else {return}
+            loadingIndicator.startAnimating()
+            loadingIndicator.isHidden = false
+            loginButton.isEnabled = false
+        }
+
     }
     
     private func stopAnimation() {
-        self.loadingIndicator.stopAnimating()
-        self.loadingIndicator.isHidden = true
-        self.loginButton.isEnabled = true
+        DispatchQueue.main.async { [weak self] in
+            guard let self else {return}
+            self.loadingIndicator.stopAnimating()
+            self.loadingIndicator.isHidden = true
+            self.loginButton.isEnabled = true
+        }
+
     }
 }
 
@@ -232,7 +240,7 @@ extension LoginViewController: LoginViewModelDelegate{
     }
     
     func loginError(message: String) {
-   
+        stopAnimation()
         let alert = UIAlertController(title: "", message: message, preferredStyle: .alert)
         let okButton = UIAlertAction(title: "Ok", style:.default)
         alert.addAction(okButton)
