@@ -17,7 +17,7 @@ extension String {
         }
         
         let outputFormatter = DateFormatter()
-        outputFormatter.dateFormat = "dd/MM/yyyy"
+        outputFormatter.dateFormat = "dd-MM-yyyy"
         outputFormatter.locale = Locale(identifier: "pt_BR")
         
         return outputFormatter.string(from: date)

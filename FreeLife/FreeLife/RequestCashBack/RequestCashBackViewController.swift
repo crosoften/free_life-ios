@@ -180,7 +180,7 @@ extension RequestCashBackViewController: ViewCodeType {
             right: view.rightAnchor,
             centerY: view.centerYAnchor,
             leftConstant: 35,
-            rightConstant: 35,
+            rightConstant: 35
         )
         
         cashLabel.anchor(

@@ -34,15 +34,24 @@ class TicketViewModel{
                 ticket.removeAll()
                 guard let ticketResponse = success.registros else {return}
                 for i in ticketResponse{
+                    //verifica se o pagamento esta vazio para aplicar o filtro
                     if i.pagamentoData.isEmpty{
                         let tickets = TicketModel(
+                            
                             date: i.dataVencimento,
+                            
                             createDate: i.dataEmissao,
+                            
                             value: i.valor,
+                            
                             originalValue: i.valor,
+                            
                             typePayment: i.tipoRecebimento,
+                            
                             code: i.linhaDigitavel,
+                            
                             link: i.gatewayLink
+                            
                         )
                         ticket.append(tickets)
                     }

@@ -315,17 +315,47 @@ class APIService {
     
     func postTicket(modelRequest: SendTicketRequest, completion: @escaping(Result<MessageResponse,Error>) -> Void) {
         let endpoint = "/debts/send-boleto"
-        
+        // 🔹 Formatador de valor decimal no padrão brasileiro
+               let formatter = NumberFormatter()
+               formatter.locale = Locale(identifier: "pt_BR")
+               formatter.numberStyle = .decimal
+               formatter.minimumFractionDigits = 2
+               formatter.maximumFractionDigits = 2
+               
+               // 🔹 Garante que "valor" será string no formato esperado
+               var valorFormatado = modelRequest.value
+               if let doubleValue = Double(modelRequest.value.replacingOccurrences(of: ",", with: ".")) {
+                   valorFormatado = formatter.string(from: NSNumber(value: doubleValue)) ?? modelRequest.value
+               }
+               
         let parameters: [String: Any] = [
-            "valor" : modelRequest.value,
-            "data_emissao" : modelRequest.issueDate,
-            "data_vencimento" : modelRequest.date,
+            "valor" : valorFormatado,
+           "data_emissao" : modelRequest.issueDate.toBRDateFormat(),   // 31/10/2024
+            "data_vencimento" : modelRequest.date.toBRDateFormat(),     // 10/09/2025
             "codigo_barras" : modelRequest.code,
             "email" : modelRequest.email
         ]
-        
-        request(method: .post, endpoint: endpoint, parameters: parameters, tokenRequired: true, completion: completion)
+
+               
+               print(parameters)
+        request(method: .post, endpoint: endpoint, parameters: parameters, tokenRequired: true) { (result: Result<MessageResponse, Error>) in
+            
+            switch result {
+            case .success(let response):
+                // Se a função request retornar HTTPURLResponse junto, você poderia acessar statusCode aqui
+                print("Requisição bem sucedida")
+                print("Retorno da API: \(response)")
+                completion(.success(response))
+                
+            case .failure(let error):
+                // Aqui imprimimos o erro da requisição
+                print("Erro na requisição: \(error.localizedDescription)")
+                completion(.failure(error))
+            }
+        }
     }
+
+
 
     
     func requestCashBack(modelRequest: RequestCashBack, completion: @escaping(Result<RequestCashbackResponse,Error>) -> Void) {
